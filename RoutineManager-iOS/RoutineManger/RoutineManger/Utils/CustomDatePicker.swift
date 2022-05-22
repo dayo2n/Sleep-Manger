@@ -51,7 +51,7 @@ struct CustomDatePicker: View {
             .padding(.horizontal)
             // Day View
             
-            HStack(spacing: 0) {
+            HStack() {
                 ForEach(days, id: \.self) {day in
                     Text(day)
                         .font(.callout)
@@ -62,11 +62,12 @@ struct CustomDatePicker: View {
             
             //Dates
             // Lazy Grid
-            let columns = Array(repeating: GridItem(.flexible()), count: 7)
+            let columns = Array(repeating: GridItem(), count: 7)
             
-            LazyVGrid(columns: columns, spacing: 15) {
+            LazyVGrid(columns: columns) {
                 ForEach(extractDate()) { value in
                     CardView(value: value)
+                        .border(.gray, width: 0.2)
                 }
             }
         }
@@ -82,11 +83,13 @@ struct CustomDatePicker: View {
         VStack {
             if value.day != -1 {
                 Text("\(value.day)")
-                    .font(.title3.bold())
+                    .font(.system(size: 10))
+                    .foregroundColor(.gray)
             }
         }
-        .padding(.vertical, 8)
-        .frame(height: 60, alignment: .top)
+        .frame(height: 70, alignment: .top)
+        .padding(.trailing, 25)
+        .padding(.top, 10)
     }
     
     // extraction Year and Mont for display
@@ -132,7 +135,7 @@ struct CustomDatePicker: View {
     }
 }
 
-// Extending Date to get Current Mont Dates
+// Extending Date to get Current Month Dates
 extension Date {
     func getAllDates() -> [Date] {
         let calendar = Calendar.current

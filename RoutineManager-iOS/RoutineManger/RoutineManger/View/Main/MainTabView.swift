@@ -15,7 +15,7 @@ struct MainTabView: View {
                     .tabItem {
                         Image(systemName: "flame")
                     }
-                HistoryView()
+                CalendarView()
                     .tabItem {
                         Image(systemName: "clock")
                 }
