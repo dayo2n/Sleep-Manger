@@ -8,7 +8,7 @@ Human-Computer Interaction 과목에서 수행한 건강관리를 토픽으로 �
 | 김태완 | 강문경 | 문다연 |
 |:------:|:-------:|:---:|
 |<img width="100" src="https://user-images.githubusercontent.com/57654681/164618244-2f4da792-040d-4bfb-9e23-992b08030b2d.PNG">|<img width="100" src="https://user-images.githubusercontent.com/57654681/164618234-64c85f8f-6289-47c5-ba2e-2a729a6c7440.PNG">|<img width="100" src="https://user-images.githubusercontent.com/57654681/164617827-d7e15ec6-54b9-4184-9008-fbc7369cb998.png">|
-|BE|BE|FE|
+|BE|BE|iOS|
 
 
 ## 🎨 Storyboard
