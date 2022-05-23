@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CustomDatePicker: View {
     
-    @Binding var currentDate: Date
+    @State var currentDate: Date = Date()
     
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
     var body: some View {
-        VStack(spacing: 35) {
+        VStack() {
             
             // Days
             let days: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -49,6 +49,7 @@ struct CustomDatePicker: View {
                 }
             }
             .padding(.horizontal)
+            .padding(.bottom)
             // Day View
             
             HStack() {
@@ -59,40 +60,37 @@ struct CustomDatePicker: View {
                         .frame(maxWidth: .infinity) // 자동 간격 최대
                 }
             }
-            
             //Dates
             // Lazy Grid
-            let columns = Array(repeating: GridItem(), count: 7)
+            let columns = Array(repeating: GridItem() , count: 7)
             
             LazyVGrid(columns: columns) {
                 ForEach(extractDate()) { value in
                     CardView(value: value)
-                        .border(.gray, width: 0.2)
+                        .frame(height: 70, alignment: .top)
                 }
             }
         }
         .onChange(of: currentMonth) { newValue in
             // updating Month
-            
             currentDate = getCurrentMonth()
         }
     }
     
     @ViewBuilder
     func CardView(value: DateValue) -> some View {
-        VStack {
+        HStack {
             if value.day != -1 {
                 Text("\(value.day)")
                     .font(.system(size: 10))
                     .foregroundColor(.gray)
+                    .padding([.leading, .top], 10)
             }
+            Spacer()
         }
-        .frame(height: 70, alignment: .top)
-        .padding(.trailing, 25)
-        .padding(.top, 10)
     }
     
-    // extraction Year and Mont for display
+    // extraction Year and Month for display
     func extraDate() -> [String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
@@ -149,5 +147,12 @@ extension Date {
         return range.compactMap { day -> Date in
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
+    }
+}
+
+
+struct CustomDatePicker_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomDatePicker()
     }
 }
