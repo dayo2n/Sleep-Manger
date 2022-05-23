@@ -11,7 +11,7 @@ import SunburstDiagram
 
 struct HistoryView: View {
     
-    @State private var date: Date = Date()
+    var historyDate: DateValue
     
     let dateformat: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,7 +26,7 @@ struct HistoryView: View {
                 
                 HStack {
                     NavigationLink(destination: CalendarView(), label: {
-                        Text("\(date, formatter: self.dateformat)'s Routine")
+                        Text("\(historyDate.date, formatter: self.dateformat)'s Routine")
                             .font(.system(size: 30, weight: .semibold))
                             .foregroundColor(Color("fontColor"))
                             .padding([.leading, .bottom])
@@ -97,11 +97,5 @@ struct HistoryView: View {
             }
         }
         .background(Color("bgColor"))
-    }
-}
-
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView()
     }
 }

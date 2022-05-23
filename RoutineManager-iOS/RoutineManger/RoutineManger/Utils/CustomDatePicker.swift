@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomDatePicker: View {
     
-    @State var currentDate: Date = Date()
+    @Binding var currentDate: Date
     
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
@@ -66,8 +66,10 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns) {
                 ForEach(extractDate()) { value in
-                    CardView(value: value)
-                        .frame(height: 70, alignment: .top)
+                    NavigationLink (destination: HistoryView(historyDate: value), label: {
+                        CardView(value: value)
+                            .frame(height: 70, alignment: .top)
+                    })
                 }
             }
         }
@@ -147,12 +149,5 @@ extension Date {
         return range.compactMap { day -> Date in
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
-    }
-}
-
-
-struct CustomDatePicker_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomDatePicker()
     }
 }
