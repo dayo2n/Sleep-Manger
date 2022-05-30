@@ -32,7 +32,7 @@ iOS 애플리케이션 '루틴 매니저'는 건강관리 중 충분하고 적�
 ### 루틴 02. 수면 전 커피 삼가기
 <img width="800" alt="스크린샷 2022-04-22 오후 3 24 03" src="https://user-images.githubusercontent.com/57654681/164615840-65e71140-facc-4268-ad7f-ba06856f8887.png">
 
-### 루티 03. 충분히 수면취하기
+### 루틴 03. 충분히 수면취하기
 <img width="800" alt="스크린샷 2022-04-22 오후 3 24 10" src="https://user-images.githubusercontent.com/57654681/164615859-b8da6355-f68a-455e-b0ed-26bdab72b14f.png">
 
 
