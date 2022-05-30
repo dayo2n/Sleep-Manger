@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var userSession: Bool = false
+    
     var body: some View {
-        MainTabView()
+        
+        if !userSession {
+//            LoginView()
+            MainTabView()
+        } else {
+            MainTabView()
+        }
     }
 }
 

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF46C8B2280A675E00F561A4"
-               BuildableName = "RoutineManger.app"
+               BuildableName = "SleepManger.app"
                BlueprintName = "RoutineManger"
                ReferencedContainer = "container:SleepManger.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF46C8B2280A675E00F561A4"
-            BuildableName = "RoutineManger.app"
+            BuildableName = "SleepManger.app"
             BlueprintName = "RoutineManger"
             ReferencedContainer = "container:SleepManger.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF46C8B2280A675E00F561A4"
-            BuildableName = "RoutineManger.app"
+            BuildableName = "SleepManger.app"
             BlueprintName = "RoutineManger"
             ReferencedContainer = "container:SleepManger.xcodeproj">
          </BuildableReference>

@@ -27,6 +27,12 @@
 		BF46C8DE280A7B7B00F561A4 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8DD280A7B7B00F561A4 /* RoutineCell.swift */; };
 		BF46C8E0280B323F00F561A4 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8DF280B323F00F561A4 /* ModalView.swift */; };
 		BF46C8E4280B332400F561A4 /* ModalAddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8E3280B332400F561A4 /* ModalAddRoutineView.swift */; };
+		BF62CDE32844F76A00A84123 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDE22844F76A00A84123 /* User.swift */; };
+		BF62CDE52844FB1C00A84123 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDE42844FB1C00A84123 /* RequestAPI.swift */; };
+		BF62CDEC2845006600A84123 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDEB2845006600A84123 /* LoginView.swift */; };
+		BF62CDEE2845007300A84123 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDED2845007300A84123 /* RegistrationView.swift */; };
+		BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDEF2845052700A84123 /* CustomTextField.swift */; };
+		BF62CDF22845053A00A84123 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDF12845053A00A84123 /* CustomSecureField.swift */; };
 		BFE5A860280C43F400A0022F /* ModalNewDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */; };
 		BFE5A863280C4AB800A0022F /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = BFE5A862280C4AB800A0022F /* PartialSheet */; };
 		BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C62811511200A1A5FC /* AlarmCell.swift */; };
@@ -57,6 +63,12 @@
 		BF46C8DD280A7B7B00F561A4 /* RoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
 		BF46C8DF280B323F00F561A4 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		BF46C8E3280B332400F561A4 /* ModalAddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAddRoutineView.swift; sourceTree = "<group>"; };
+		BF62CDE22844F76A00A84123 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BF62CDE42844FB1C00A84123 /* RequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
+		BF62CDEB2845006600A84123 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BF62CDED2845007300A84123 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		BF62CDEF2845052700A84123 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		BF62CDF12845053A00A84123 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNewDrinkView.swift; sourceTree = "<group>"; };
 		BFF8F6C62811511200A1A5FC /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		BFF8F6C82811B86800A1A5FC /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupView.swift; path = ../../../PopupView.swift; sourceTree = "<group>"; };
@@ -119,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				BFF8F6C82811B86800A1A5FC /* PopupView.swift */,
+				BF62CDEF2845052700A84123 /* CustomTextField.swift */,
+				BF62CDF12845053A00A84123 /* CustomSecureField.swift */,
 				BFF8F6C62811511200A1A5FC /* AlarmCell.swift */,
 				BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */,
 			);
@@ -128,6 +142,7 @@
 		BF46C8C5280A67B900F561A4 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BF62CDE42844FB1C00A84123 /* RequestAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -142,6 +157,7 @@
 		BF46C8C7280A67C900F561A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF62CDEA2845005600A84123 /* Authentification */,
 				BF46C8D4280A691B00F561A4 /* Today */,
 				BF46C8CB280A682500F561A4 /* Main */,
 				BF46C8CA280A681700F561A4 /* Manage */,
@@ -154,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				BF2237A928282CA200BBD8E5 /* DateValue.swift */,
+				BF62CDE22844F76A00A84123 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +218,15 @@
 				BF46C8D9280A6B6E00F561A4 /* DrinkCell.swift */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		BF62CDEA2845005600A84123 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				BF62CDEB2845006600A84123 /* LoginView.swift */,
+				BF62CDED2845007300A84123 /* RegistrationView.swift */,
+			);
+			path = Authentification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,19 +307,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF62CDF22845053A00A84123 /* CustomSecureField.swift in Sources */,
 				BF46C8E0280B323F00F561A4 /* ModalView.swift in Sources */,
 				BF46C8B9280A675E00F561A4 /* ContentView.swift in Sources */,
 				BF46C8DC280A756500F561A4 /* HeaderView.swift in Sources */,
+				BF62CDEE2845007300A84123 /* RegistrationView.swift in Sources */,
 				BF46C8B7280A675E00F561A4 /* RoutineMangerApp.swift in Sources */,
 				BF46C8DA280A6B6E00F561A4 /* DrinkCell.swift in Sources */,
 				BF2237A828282A6000BBD8E5 /* CustomDatePicker.swift in Sources */,
 				BF46C8DE280A7B7B00F561A4 /* RoutineCell.swift in Sources */,
+				BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */,
 				BF0446D0280DCEFA00D05C9D /* ModalManageCoffeeRoutine.swift in Sources */,
 				BFE5A860280C43F400A0022F /* ModalNewDrinkView.swift in Sources */,
 				BF0446CE280DC30500D05C9D /* ModalManageWaterRoutine.swift in Sources */,
 				BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */,
 				BF2237A6282828E000BBD8E5 /* CalendarView.swift in Sources */,
 				BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */,
+				BF62CDEC2845006600A84123 /* LoginView.swift in Sources */,
 				BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */,
 				BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */,
 				BF46C8D3280A68F000F561A4 /* HistoryView.swift in Sources */,
@@ -303,6 +333,8 @@
 				BF0446D2280DCF0900D05C9D /* ModalManageSleepRoutine.swift in Sources */,
 				BF46C8D8280A6B6300F561A4 /* SleepCell.swift in Sources */,
 				BF46C8E4280B332400F561A4 /* ModalAddRoutineView.swift in Sources */,
+				BF62CDE52844FB1C00A84123 /* RequestAPI.swift in Sources */,
+				BF62CDE32844F76A00A84123 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
