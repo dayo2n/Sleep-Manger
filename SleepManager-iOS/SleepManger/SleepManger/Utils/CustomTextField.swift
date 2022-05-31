@@ -17,6 +17,7 @@ struct CustomTextField: View {
             if text.isEmpty {
                 placeholder
                     .padding(.leading, 40)
+                    .foregroundColor(.gray)
             }
             
             HStack {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     
-    @State private var uid = ""
+    @State private var email = ""
     @State private var username = ""
     
     
@@ -32,7 +32,7 @@ struct RegistrationView: View {
                     .padding(.top, 1)
                 
                 VStack {
-                    CustomTextField(text: $username, placeholder: Text("ID"), imageName: "highlighter")
+                    CustomTextField(text: $email, placeholder: Text("ID"), imageName: "highlighter")
                         .padding()
                         .cornerRadius(15)
                         .border(.gray)
