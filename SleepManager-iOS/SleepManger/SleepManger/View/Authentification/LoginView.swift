@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var uid = ""
+    @State private var email = ""
     @State private var username = ""
     
     var body: some View {
@@ -22,6 +22,7 @@ struct LoginView: View {
                     Text("Sleep Manager")
                         .font(.system(size: 50, weight: .heavy, design: .serif))
                         .foregroundColor(Color("fontColor"))
+                        .frame(maxWidth: .infinity, alignment: .center)
                     
                     Text("Sleep Management for busy modern people")
                         .font(.system(size: 15, weight: .semibold, design: .serif))
@@ -29,25 +30,22 @@ struct LoginView: View {
                         .padding(.top, 0.01)
                     
                     VStack {
-                        CustomTextField(text: $uid, placeholder: Text("ID"), imageName: "highlighter")
+                        CustomTextField(text: $email, placeholder: Text("E-mail"), imageName: "envelope")
                             .padding()
                             .cornerRadius(15)
                             .border(.gray)
-                            .foregroundColor(.gray)
                             .padding(.horizontal, 32)
-                        
                         
                         CustomTextField(text: $username, placeholder: Text("Username"), imageName: "person")
                             .padding()
                             .cornerRadius(15)
                             .border(.gray)
-                            .foregroundColor(.gray)
                             .padding(.horizontal, 32)
                         
                         // sign in
                         Button(action: {
                         }, label: {
-                            Text("Sign In")
+                            Text("Sign in")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(width: 360, height: 50)
@@ -74,16 +72,13 @@ struct LoginView: View {
                                 .padding(.bottom, 16)
                         })
                     }
-                    .padding(.top, 100)
+                    .padding(.top, 70)
                 }
                 .padding(.top)
             }
         }
     }
 }
-
-// sign up을 눌러도 navigate되지 않음
-// textfield에 작성하면 글씨 색깔이 gray
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
