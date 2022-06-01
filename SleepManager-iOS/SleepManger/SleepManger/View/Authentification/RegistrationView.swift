@@ -10,10 +10,8 @@ import SwiftUI
 struct RegistrationView: View {
     
     @State private var email = ""
-    @State private var username = ""
-    
-    
     @Environment(\.presentationMode) var mode
+    @EnvironmentObject var viewModel : AuthViewModel
     
     var body: some View {
         ZStack {
@@ -36,20 +34,12 @@ struct RegistrationView: View {
                         .padding()
                         .cornerRadius(15)
                         .border(.gray)
-                        .foregroundColor(.gray)
                         .padding(.horizontal, 32)
-                    
-                    
-                    CustomTextField(text: $username, placeholder: Text("Username"), imageName: "person")
-                        .padding()
-                        .cornerRadius(15)
-                        .border(.gray)
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 32)
-                    
                     
                     // sign up
-                    Button(action: {}, label: {
+                    Button(action: {
+                        viewModel.register(withEmail: email)
+                    }, label: {
                         Text("Sign Up")
                             .font(.headline)
                             .foregroundColor(.white)

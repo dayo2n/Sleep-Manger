@@ -33,8 +33,11 @@
 		BF62CDEE2845007300A84123 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDED2845007300A84123 /* RegistrationView.swift */; };
 		BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDEF2845052700A84123 /* CustomTextField.swift */; };
 		BF62CDF22845053A00A84123 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDF12845053A00A84123 /* CustomSecureField.swift */; };
+		BF62CDF52845C6BC00A84123 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDF42845C6BC00A84123 /* Time.swift */; };
 		BFE5A860280C43F400A0022F /* ModalNewDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */; };
 		BFE5A863280C4AB800A0022F /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = BFE5A862280C4AB800A0022F /* PartialSheet */; };
+		BFE985642847470900AEA19C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985632847470900AEA19C /* Alamofire */; };
+		BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9856628474A3C00AEA19C /* AuthViewModel.swift */; };
 		BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C62811511200A1A5FC /* AlarmCell.swift */; };
 		BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C82811B86800A1A5FC /* PopupView.swift */; };
 		BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */; };
@@ -69,7 +72,10 @@
 		BF62CDED2845007300A84123 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BF62CDEF2845052700A84123 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BF62CDF12845053A00A84123 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		BF62CDF32845C00F00A84123 /* RoutineManger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RoutineManger-Info.plist"; sourceTree = "<group>"; };
+		BF62CDF42845C6BC00A84123 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNewDrinkView.swift; sourceTree = "<group>"; };
+		BFE9856628474A3C00AEA19C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		BFF8F6C62811511200A1A5FC /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		BFF8F6C82811B86800A1A5FC /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupView.swift; path = ../../../PopupView.swift; sourceTree = "<group>"; };
 		BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSleepButton.swift; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE985642847470900AEA19C /* Alamofire in Frameworks */,
 				BFFE6EE9281A8A54001B309C /* SunburstDiagram in Frameworks */,
 				BFE5A863280C4AB800A0022F /* PartialSheet in Frameworks */,
 			);
@@ -91,6 +98,7 @@
 		BF46C8AA280A675E00F561A4 = {
 			isa = PBXGroup;
 			children = (
+				BF62CDF32845C00F00A84123 /* RoutineManger-Info.plist */,
 				BF46C8B5280A675E00F561A4 /* SleepManger */,
 				BF46C8B4280A675E00F561A4 /* Products */,
 			);
@@ -150,6 +158,7 @@
 		BF46C8C6280A67C000F561A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BFE9856528474A2A00AEA19C /* Authentification */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -171,6 +180,7 @@
 			children = (
 				BF2237A928282CA200BBD8E5 /* DateValue.swift */,
 				BF62CDE22844F76A00A84123 /* User.swift */,
+				BF62CDF42845C6BC00A84123 /* Time.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +239,14 @@
 			path = Authentification;
 			sourceTree = "<group>";
 		};
+		BFE9856528474A2A00AEA19C /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				BFE9856628474A3C00AEA19C /* AuthViewModel.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,6 +266,7 @@
 			packageProductDependencies = (
 				BFE5A862280C4AB800A0022F /* PartialSheet */,
 				BFFE6EE8281A8A54001B309C /* SunburstDiagram */,
+				BFE985632847470900AEA19C /* Alamofire */,
 			);
 			productName = RoutineManger;
 			productReference = BF46C8B3280A675E00F561A4 /* SleepManger.app */;
@@ -280,6 +299,7 @@
 			packageReferences = (
 				BFE5A861280C4AB800A0022F /* XCRemoteSwiftPackageReference "PartialSheet" */,
 				BFFE6EE7281A8A54001B309C /* XCRemoteSwiftPackageReference "SwiftSunburstDiagram" */,
+				BFE985622847470900AEA19C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = BF46C8B4280A675E00F561A4 /* Products */;
 			projectDirPath = "";
@@ -323,9 +343,11 @@
 				BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */,
 				BF2237A6282828E000BBD8E5 /* CalendarView.swift in Sources */,
 				BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */,
+				BF62CDF52845C6BC00A84123 /* Time.swift in Sources */,
 				BF62CDEC2845006600A84123 /* LoginView.swift in Sources */,
 				BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */,
 				BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */,
+				BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */,
 				BF46C8D3280A68F000F561A4 /* HistoryView.swift in Sources */,
 				BF46C8CF280A688A00F561A4 /* MainTabView.swift in Sources */,
 				BF46C8D6280A692900F561A4 /* TodayView.swift in Sources */,
@@ -468,6 +490,7 @@
 				DEVELOPMENT_TEAM = 7D5PZJWQ9T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RoutineManger-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -497,6 +520,7 @@
 				DEVELOPMENT_TEAM = 7D5PZJWQ9T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RoutineManger-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -547,6 +571,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		BFE985622847470900AEA19C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
 		BFFE6EE7281A8A54001B309C /* XCRemoteSwiftPackageReference "SwiftSunburstDiagram" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lludo/SwiftSunburstDiagram.git";
@@ -562,6 +594,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BFE5A861280C4AB800A0022F /* XCRemoteSwiftPackageReference "PartialSheet" */;
 			productName = PartialSheet;
+		};
+		BFE985632847470900AEA19C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE985622847470900AEA19C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		BFFE6EE8281A8A54001B309C /* SunburstDiagram */ = {
 			isa = XCSwiftPackageProductDependency;

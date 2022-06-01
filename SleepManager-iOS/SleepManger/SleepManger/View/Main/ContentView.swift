@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var userSession: Bool = false
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
 //

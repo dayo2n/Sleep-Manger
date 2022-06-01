@@ -9,7 +9,7 @@ import SwiftUI
 
 struct User: Identifiable, Decodable {
     let id: Int
-    var username: String
+    var email: String
 }
 
 

@@ -1,14 +1,32 @@
 //
-//  RequestAPI.swift
+//  AuthViewModel.swift
 //  RoutineManger
 //
-//  Created by 문다 on 2022/05/30.
+//  Created by 문다 on 2022/06/01.
 //
 
-import Foundation
+import SwiftUI
 import Alamofire
 
-func postUSer() {
+class AuthViewModel: ObservableObject {
+    
+    @Published var userSession: User?
+    @Published var currentUser: User?
+    
+    static let shared = AuthViewModel()
+    
+    init() {
+//        userSession = Auth.auth().currentUser
+        // makes a API call to the firebase server
+        // If there is no login information, userSession would be 'nil'
+        fetchUser()
+    }
+    
+    func login(withEmail email: String, password: String) {
+        
+    }
+    
+    func register(withEmail email: String) {
         let url = "http://3.39.141.189:8080/members"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -16,7 +34,7 @@ func postUSer() {
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["email":"0217dayun@naver.com"] as Dictionary
+        let params = ["email": email] as Dictionary
 
         // httpBody 에 parameters 추가
         do {
@@ -29,8 +47,24 @@ func postUSer() {
             switch response.result {
             case .success:
                 print("POST 성공")
+//                self.userSession = User(id: <#T##Int#>, email: <#T##String#>)
+                self.fetchUser()
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
         }
     }
+    
+    func signout() {
+        self.userSession = nil
+        
+    }
+    
+    func resetPassword() {
+        
+    }
+    
+    func fetchUser() {
+
+    }
+}
