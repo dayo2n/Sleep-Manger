@@ -22,8 +22,6 @@ struct HistoryView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HeaderView()
-                
                 HStack {
                     NavigationLink(destination: CalendarView(), label: {
                         Text("\(historyDate.date, formatter: self.dateformat)'s Routine")

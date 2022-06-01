@@ -14,10 +14,13 @@ struct TodayView: View {
     @State private var wakeUp : Bool = false
     @State private var date: Date = Date()
     
+    let user: User
+
+    
     var body: some View {
         ScrollView {
             VStack {
-                HeaderView()
+                HeaderView(user: user)
                 
                 HStack {
                     Text("Today's Routine")
@@ -130,12 +133,5 @@ struct TodayView: View {
                 .cornerRadius(10)
             }
         }
-    }
-}
-
-struct TodayView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodayView()
-            .attachPartialSheetToRoot()
     }
 }

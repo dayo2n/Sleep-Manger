@@ -10,6 +10,7 @@ import PartialSheet
 
 struct ManageView: View {
     
+    let user: User
     @State private var showAddModal = false
     
     private let items = [GridItem(), GridItem()]
@@ -24,7 +25,7 @@ struct ManageView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HeaderView()
+                HeaderView(user: user)
                 
                 HStack {
                     Text("Today's Routine")
@@ -93,11 +94,5 @@ struct ManageView: View {
                 }
             }
         }
-    }
-}
-struct ManageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ManageView()
-            .attachPartialSheetToRoot()
     }
 }

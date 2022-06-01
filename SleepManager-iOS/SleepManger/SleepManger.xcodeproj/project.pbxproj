@@ -38,6 +38,7 @@
 		BFE985642847470900AEA19C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985632847470900AEA19C /* Alamofire */; };
 		BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9856628474A3C00AEA19C /* AuthViewModel.swift */; };
 		BFE9856A2847638300AEA19C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985692847638300AEA19C /* SwiftyJSON */; };
+		BFE9856D2847732B00AEA19C /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9856C2847732B00AEA19C /* HeaderViewModel.swift */; };
 		BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C62811511200A1A5FC /* AlarmCell.swift */; };
 		BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C82811B86800A1A5FC /* PopupView.swift */; };
 		BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */; };
@@ -75,6 +76,7 @@
 		BF62CDF42845C6BC00A84123 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNewDrinkView.swift; sourceTree = "<group>"; };
 		BFE9856628474A3C00AEA19C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		BFE9856C2847732B00AEA19C /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 		BFF8F6C62811511200A1A5FC /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		BFF8F6C82811B86800A1A5FC /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupView.swift; path = ../../../PopupView.swift; sourceTree = "<group>"; };
 		BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSleepButton.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		BF46C8C6280A67C000F561A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BFE9856B2847732100AEA19C /* Today */,
 				BFE9856528474A2A00AEA19C /* Authentification */,
 			);
 			path = ViewModel;
@@ -246,6 +249,14 @@
 			path = Authentification;
 			sourceTree = "<group>";
 		};
+		BFE9856B2847732100AEA19C /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				BFE9856C2847732B00AEA19C /* HeaderViewModel.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,6 +341,7 @@
 			files = (
 				BF62CDF22845053A00A84123 /* CustomSecureField.swift in Sources */,
 				BF46C8E0280B323F00F561A4 /* ModalView.swift in Sources */,
+				BFE9856D2847732B00AEA19C /* HeaderViewModel.swift in Sources */,
 				BF46C8B9280A675E00F561A4 /* ContentView.swift in Sources */,
 				BF46C8DC280A756500F561A4 /* HeaderView.swift in Sources */,
 				BF62CDEE2845007300A84123 /* RegistrationView.swift in Sources */,
