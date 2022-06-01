@@ -1,14 +1,13 @@
 package cnu.routinemanager.service;
 
 import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cnu.routinemanager.domain.Member;
 import cnu.routinemanager.dto.request.MemberRegistrationRequest;
 import cnu.routinemanager.dto.response.MemberRegistrationResponse;
-import cnu.routinemanager.domain.Member;
 import cnu.routinemanager.repository.MemberRepository;
 
 @Service
@@ -20,7 +19,7 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberRegistrationResponse registerMember(@Valid MemberRegistrationRequest memberRegistrationRequest) {
+    public MemberRegistrationResponse registerMember(MemberRegistrationRequest memberRegistrationRequest) {
         Member member = new Member(memberRegistrationRequest.getEmail());
         Member savedMember = memberRepository.save(member);
         return new MemberRegistrationResponse(savedMember.getId(), savedMember.getEmail());
