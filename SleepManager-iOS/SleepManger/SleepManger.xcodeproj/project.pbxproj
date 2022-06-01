@@ -28,7 +28,6 @@
 		BF46C8E0280B323F00F561A4 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8DF280B323F00F561A4 /* ModalView.swift */; };
 		BF46C8E4280B332400F561A4 /* ModalAddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8E3280B332400F561A4 /* ModalAddRoutineView.swift */; };
 		BF62CDE32844F76A00A84123 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDE22844F76A00A84123 /* User.swift */; };
-		BF62CDE52844FB1C00A84123 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDE42844FB1C00A84123 /* RequestAPI.swift */; };
 		BF62CDEC2845006600A84123 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDEB2845006600A84123 /* LoginView.swift */; };
 		BF62CDEE2845007300A84123 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDED2845007300A84123 /* RegistrationView.swift */; };
 		BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDEF2845052700A84123 /* CustomTextField.swift */; };
@@ -38,6 +37,7 @@
 		BFE5A863280C4AB800A0022F /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = BFE5A862280C4AB800A0022F /* PartialSheet */; };
 		BFE985642847470900AEA19C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985632847470900AEA19C /* Alamofire */; };
 		BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9856628474A3C00AEA19C /* AuthViewModel.swift */; };
+		BFE9856A2847638300AEA19C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985692847638300AEA19C /* SwiftyJSON */; };
 		BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C62811511200A1A5FC /* AlarmCell.swift */; };
 		BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C82811B86800A1A5FC /* PopupView.swift */; };
 		BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */; };
@@ -67,7 +67,6 @@
 		BF46C8DF280B323F00F561A4 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		BF46C8E3280B332400F561A4 /* ModalAddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAddRoutineView.swift; sourceTree = "<group>"; };
 		BF62CDE22844F76A00A84123 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		BF62CDE42844FB1C00A84123 /* RequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		BF62CDEB2845006600A84123 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BF62CDED2845007300A84123 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BF62CDEF2845052700A84123 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 			files = (
 				BFE985642847470900AEA19C /* Alamofire in Frameworks */,
 				BFFE6EE9281A8A54001B309C /* SunburstDiagram in Frameworks */,
+				BFE9856A2847638300AEA19C /* SwiftyJSON in Frameworks */,
 				BFE5A863280C4AB800A0022F /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,7 +150,6 @@
 		BF46C8C5280A67B900F561A4 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				BF62CDE42844FB1C00A84123 /* RequestAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -267,6 +266,7 @@
 				BFE5A862280C4AB800A0022F /* PartialSheet */,
 				BFFE6EE8281A8A54001B309C /* SunburstDiagram */,
 				BFE985632847470900AEA19C /* Alamofire */,
+				BFE985692847638300AEA19C /* SwiftyJSON */,
 			);
 			productName = RoutineManger;
 			productReference = BF46C8B3280A675E00F561A4 /* SleepManger.app */;
@@ -300,6 +300,7 @@
 				BFE5A861280C4AB800A0022F /* XCRemoteSwiftPackageReference "PartialSheet" */,
 				BFFE6EE7281A8A54001B309C /* XCRemoteSwiftPackageReference "SwiftSunburstDiagram" */,
 				BFE985622847470900AEA19C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BFE985682847638300AEA19C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = BF46C8B4280A675E00F561A4 /* Products */;
 			projectDirPath = "";
@@ -355,7 +356,6 @@
 				BF0446D2280DCF0900D05C9D /* ModalManageSleepRoutine.swift in Sources */,
 				BF46C8D8280A6B6300F561A4 /* SleepCell.swift in Sources */,
 				BF46C8E4280B332400F561A4 /* ModalAddRoutineView.swift in Sources */,
-				BF62CDE52844FB1C00A84123 /* RequestAPI.swift in Sources */,
 				BF62CDE32844F76A00A84123 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +579,14 @@
 				minimumVersion = 5.6.1;
 			};
 		};
+		BFE985682847638300AEA19C /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		BFFE6EE7281A8A54001B309C /* XCRemoteSwiftPackageReference "SwiftSunburstDiagram" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lludo/SwiftSunburstDiagram.git";
@@ -599,6 +607,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BFE985622847470900AEA19C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		BFE985692847638300AEA19C /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE985682847638300AEA19C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 		BFFE6EE8281A8A54001B309C /* SunburstDiagram */ = {
 			isa = XCSwiftPackageProductDependency;

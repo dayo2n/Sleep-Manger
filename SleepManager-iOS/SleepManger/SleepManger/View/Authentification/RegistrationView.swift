@@ -30,7 +30,7 @@ struct RegistrationView: View {
                     .padding(.top, 1)
                 
                 VStack {
-                    CustomTextField(text: $email, placeholder: Text("ID"), imageName: "highlighter")
+                    CustomTextField(text: $email, placeholder: Text("E-mail"), imageName: "highlighter")
                         .padding()
                         .cornerRadius(15)
                         .border(.gray)
