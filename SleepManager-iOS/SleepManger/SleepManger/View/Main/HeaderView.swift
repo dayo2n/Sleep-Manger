@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct HeaderView: View {
+    
+    let user: User
+    @ObservedObject var viewModel: HeaderViewModel
+    
+    init(user: User) {
+        self.user = user
+        self.viewModel = HeaderViewModel(user: user)
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -18,7 +27,7 @@ struct HeaderView: View {
                     .foregroundColor(.gray)
                     .padding()
                 
-                Text("Hi, [User]")
+                Text("Hi, [\(viewModel.user.email)]")
                     .font(.system(size: 17, weight: .semibold))
                 
                 Spacer()
@@ -31,11 +40,5 @@ struct HeaderView: View {
                     .padding()
             }
         }
-    }
-}
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView()
     }
 }

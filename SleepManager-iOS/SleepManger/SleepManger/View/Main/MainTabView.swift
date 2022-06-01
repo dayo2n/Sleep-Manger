@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
+    let user: User
+    
     var body: some View {
         NavigationView {
             TabView {
-                TodayView()
+                TodayView(user: user)
                     .tabItem {
                         Image(systemName: "flame")
                     }
@@ -19,7 +22,7 @@ struct MainTabView: View {
                     .tabItem {
                         Image(systemName: "clock")
                 }
-                ManageView()
+                ManageView(user: user)
                     .tabItem {
                         Image(systemName: "slider.horizontal.3")
                 }
@@ -28,10 +31,12 @@ struct MainTabView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-}
-
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
+    
+    var logoutButton: some View {
+        Button {
+            AuthViewModel.shared.signout()
+        } label : {
+            Text("Logout").foregroundColor(.black)
+        }
     }
 }

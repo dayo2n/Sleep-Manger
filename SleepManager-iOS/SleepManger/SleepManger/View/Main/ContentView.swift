@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var userSession: Bool = false
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
 //
-        if !userSession {
+        if viewModel.userSession == nil {
             LoginView()
-//            MainTabView()
         } else {
-            MainTabView()
+            if let user = viewModel.userSession { // viewModel.currentUser ????
+                MainTabView(user: user)
+            }
         }
     }
 }

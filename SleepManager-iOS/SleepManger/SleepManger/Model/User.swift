@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct User: Identifiable, Decodable {
+struct User: Identifiable, Codable {
     let id: Int
-    var username: String
+    var email: String
 }
 
 

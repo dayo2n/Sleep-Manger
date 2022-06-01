@@ -11,7 +11,7 @@ import SwiftUI
 struct RoutineMangerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(AuthViewModel.shared) // 애플리케이션을 통틀어 한 객체만 공유하여 사용
         }
     }
 }

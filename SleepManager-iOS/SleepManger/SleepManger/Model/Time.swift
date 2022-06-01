@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Time {
+    var time: String // HH:MM 형식
+}
