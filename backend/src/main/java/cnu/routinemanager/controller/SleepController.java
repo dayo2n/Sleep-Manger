@@ -26,11 +26,9 @@ public class SleepController {
                              .body(goalSleepTimeResponse);
     }
 
-    @PostMapping(value = "goals")
+    @PutMapping(value = "goals")
     public ResponseEntity<Void> setGoalSleepTime(@Valid @RequestBody GoalSleepTimeRequest goalSleepTimeRequest) {
         goalSleepService.setGoalSleepTime(goalSleepTimeRequest);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                             .build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }
