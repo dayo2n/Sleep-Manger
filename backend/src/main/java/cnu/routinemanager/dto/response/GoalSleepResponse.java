@@ -11,10 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GoalSleepResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", timezone = "Asia/Seoul")
+    private LocalTime goalBedTime;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", timezone = "Asia/Seoul")
     private LocalTime goalWakeUpTime;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", timezone = "Asia/Seoul")
-    private LocalTime goalBedTime;
+    private LocalTime weekendGoalBedTime;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", timezone = "Asia/Seoul")
+    private LocalTime weekendGoalWakeUpTime;
 
     public GoalSleepResponse(LocalTime goalWakeUpTime, LocalTime goalBedTime) {
         this.goalWakeUpTime = goalWakeUpTime;
