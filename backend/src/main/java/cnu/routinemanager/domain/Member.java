@@ -1,6 +1,8 @@
 package cnu.routinemanager.domain;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 import lombok.AccessLevel;
@@ -22,6 +24,9 @@ public class Member {
 
     @Embedded
     private GoalSleep goalSleep;
+
+    @OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Sleep> sleeps = new ArrayList<>();
 
     public Member(String email) {
         this.email = email;
