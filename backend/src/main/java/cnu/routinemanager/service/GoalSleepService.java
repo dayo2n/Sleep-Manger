@@ -28,8 +28,14 @@ public class GoalSleepService {
         );
     }
 
+    @Transactional
     public void setGoalSleepTime(GoalSleepTimeRequest goalSleepTimeRequest) {
         Member member = memberService.findById(goalSleepTimeRequest.getId());
-
+        member.setGoalSleep(
+                goalSleepTimeRequest.getGoalBedTime(),
+                goalSleepTimeRequest.getGoalWakeUpTime(),
+                goalSleepTimeRequest.getWeekendGoalBedTime(),
+                goalSleepTimeRequest.getWeekendGoalWakeUpTime()
+        );
     }
 }

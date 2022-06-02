@@ -1,5 +1,6 @@
 package cnu.routinemanager.domain;
 
+import java.time.LocalTime;
 import javax.persistence.*;
 
 import lombok.AccessLevel;
@@ -29,5 +30,12 @@ public class Member {
     public Member(Long id, String email) {
         this.id = id;
         this.email = email;
+    }
+
+    public void setGoalSleep(LocalTime goalBedTime, LocalTime goalWakeUpTime, LocalTime weekendGoalBedTime, LocalTime weekendGoalWakeUpTime) {
+        goalSleep.setGoalBedTime(goalBedTime);
+        goalSleep.setGoalWakeUpTime(goalWakeUpTime);
+        goalSleep.setWeekendGoalBedTime(weekendGoalBedTime);
+        goalSleep.setWeekendGoalWakeUpTime(weekendGoalWakeUpTime);
     }
 }
