@@ -1,6 +1,7 @@
 package cnu.routinemanager.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -49,5 +50,11 @@ public class SleepController {
     public ResponseEntity<DaySleepRecordResponse> findDaySleepRecord(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         DaySleepRecordResponse daySleepRecord = sleepService.findDaySleepRecord(id, date);
         return ResponseEntity.ok().body(daySleepRecord);
+    }
+
+    @GetMapping(value = "period")
+    public ResponseEntity<List<DaySleepRecordResponse>> findDaySleepRecord(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, int offset) {
+        List<DaySleepRecordResponse> periodSleepRecords = sleepService.findPeriodSleepRecord(id, date, offset);
+        return ResponseEntity.ok().body(periodSleepRecords);
     }
 }
