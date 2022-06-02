@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemberRegistrationResponse {
     private Long id;
-
     private String email;
 
     public MemberRegistrationResponse(Long id, String email) {
