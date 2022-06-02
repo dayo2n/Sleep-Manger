@@ -1,11 +1,15 @@
 package cnu.routinemanager.service;
 
+import java.time.LocalDate;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cnu.routinemanager.domain.Member;
 import cnu.routinemanager.domain.Sleep;
 import cnu.routinemanager.dto.request.DaySleepRecordRequest;
+import cnu.routinemanager.dto.response.DaySleepRecordResponse;
 import cnu.routinemanager.exception.SleepException;
 import cnu.routinemanager.repository.SleepRepository;
 
@@ -26,7 +30,7 @@ public class SleepService {
                 .getDate());
 
         if (isDaySleepRecordAlreadyExists) {
-            throw new SleepException("해당 날짜의 수면 기록이 이미 존재합니다.");
+            throw new SleepException("해당 날짜의 수면 기록이 이미 존재합니다.", HttpStatus.BAD_REQUEST);
         }
 
         Sleep sleep = new Sleep(
@@ -36,5 +40,11 @@ public class SleepService {
                 daySleepRecordRequest.getDate()
         );
         sleepRepository.save(sleep);
+    }
+
+    public DaySleepRecordResponse findDaySleepRecord(Long memberId, LocalDate date) {
+        Sleep sleep = sleepRepository.findByMemberIdAndDate(memberId, date)
+                                     .orElseThrow(() -> new SleepException("해당 날짜의 수면 기록이 존재하지 않습니다.", HttpStatus.NOT_FOUND));
+        return new DaySleepRecordResponse(sleep.getBedTime(), sleep.getWakeUpTime());
     }
 }
