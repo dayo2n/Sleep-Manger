@@ -22,8 +22,10 @@ public class GoalSleepResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", timezone = "Asia/Seoul")
     private LocalTime weekendGoalWakeUpTime;
 
-    public GoalSleepResponse(LocalTime goalWakeUpTime, LocalTime goalBedTime) {
-        this.goalWakeUpTime = goalWakeUpTime;
+    public GoalSleepResponse(LocalTime goalBedTime, LocalTime goalWakeUpTime, LocalTime weekendGoalBedTime, LocalTime weekendGoalWakeUpTime) {
         this.goalBedTime = goalBedTime;
+        this.goalWakeUpTime = goalWakeUpTime;
+        this.weekendGoalBedTime = weekendGoalBedTime;
+        this.weekendGoalWakeUpTime = weekendGoalWakeUpTime;
     }
 }
