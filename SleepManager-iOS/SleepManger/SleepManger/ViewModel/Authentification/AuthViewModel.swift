@@ -22,9 +22,9 @@ class AuthViewModel: ObservableObject {
         fetchUser()
     }
     
-    // Testing 필요 
+    // Testing 필요
     func login(withEmail email: String) {
-        let url = "http://3.39.141.189:8080/members"
+        let url = "http://3.39.141.189:8080/members/login"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -43,9 +43,16 @@ class AuthViewModel: ObservableObject {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success (let userInfo):
-                
-//                self.userSession = User(id: <#T##Int#>, email: <#T##String#>)
-                self.fetchUser()
+                let json = userInfo.data(using: .utf8)!
+                do {
+                    let user = try JSONDecoder().decode(User.self, from: json)
+                    
+                    print("✅ DEBUG: \(user.id) \(user.email)")
+                    self.userSession = User(id: user.id, email: user.email)
+                    self.fetchUser()
+                } catch (let error ) {
+                    print("🚫 DEBUG: \(error.localizedDescription)")
+                }
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
