@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cnu.routinemanager.domain.Member;
+import cnu.routinemanager.dto.request.LoginRequest;
 import cnu.routinemanager.dto.request.MemberRegistrationRequest;
+import cnu.routinemanager.dto.response.LoginResponse;
 import cnu.routinemanager.dto.response.MemberRegistrationResponse;
 import cnu.routinemanager.repository.MemberRepository;
 
@@ -28,5 +30,12 @@ public class MemberService {
     public Member findById(long id) {
         return memberRepository.findById(id)
                                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 멤버입니다."));
+    }
+
+    public LoginResponse login(LoginRequest loginRequest) {
+        Member member = memberRepository.findByEmail(loginRequest.getEmail())
+                                        .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 멤버입니다."));
+
+        return new LoginResponse(member.getId(), member.getEmail());
     }
 }
