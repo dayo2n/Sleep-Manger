@@ -34,6 +34,9 @@ struct ModalManageSleepRoutine: View {
     
     func Date2String() -> [String] {
         
+        print("🔹 DEBUG: new sleep goal \(sleepGoalTime), \n new wake-up goal \(wakeUpGoalTime)")
+        
+        
         var newGoals : [String] = [] // [new sleep goal time hour, min, new wake-up goal time hour, min]
         
         let dateFormatter = DateFormatter()
@@ -41,7 +44,6 @@ struct ModalManageSleepRoutine: View {
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         let splitOnlySleepTime = dateFormatter.string(from: sleepGoalTime).split(separator: " ")
         let splitNewSleepGoalTime = splitOnlySleepTime[1].split(separator: ":")
-        print(dateFormatter.string(from: sleepGoalTime))
         newGoals.append("\(splitNewSleepGoalTime[0])")
         newGoals.append("\(splitNewSleepGoalTime[1])")
         
