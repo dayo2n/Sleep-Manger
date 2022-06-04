@@ -22,6 +22,8 @@ struct ManageView: View {
     @State private var showModalIdx : Int = 0
     @State private var showModal = [false, false, false]
     
+    @ObservedObject var viewModel = ManageViewModel()
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -40,11 +42,16 @@ struct ManageView: View {
                 
                 LazyVGrid(columns: items, content: {
 
+                    // 각 루틴 세팅 모달 클릭시
                     ForEach(routineImage.indices, id: \.self) { idx in
                         HStack {
                             Button(action: {
                                 showModal[idx] = true
                                 self.showModalIdx = idx
+                                
+                                if idx == 2 {
+                                    viewModel.getSleepGoal()
+                                }
                             }, label: {
                                     RoutineCell(imageName: routineImage[idx], routineName: routineName[idx])
                                         .foregroundColor(.black)
@@ -59,6 +66,7 @@ struct ManageView: View {
                         }
                 }
                     
+                    // 루틴 추가 버튼
                     Button(action: {
                         self.showAddModal = true
                     }, label: {
@@ -90,7 +98,7 @@ struct ManageView: View {
                 } else if routineImage[showModalIdx] == "coffee" {
                     ModalManageCoffeeRoutine(isPresented: self.$showModal[showModalIdx])
                 } else if routineImage[showModalIdx] == "sleeping" {
-                    ModalManageSleepRoutine(isPresented: self.$showModal[showModalIdx])
+                    ModalManageSleepRoutine(isPresented: self.$showModal[showModalIdx], viewModel: viewModel)
                 }
             }
         }

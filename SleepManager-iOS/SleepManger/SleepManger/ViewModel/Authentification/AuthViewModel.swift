@@ -22,7 +22,7 @@ class AuthViewModel: ObservableObject {
         fetchUser()
     }
     
-    // Testing 필요
+    
     func login(withEmail email: String) {
         let url = "http://3.39.141.189:8080/members/login"
         var request = URLRequest(url: URL(string: url)!)
@@ -98,11 +98,7 @@ class AuthViewModel: ObservableObject {
     func signout() {
         self.userSession = nil
     }
-    
-    func resetPassword() {
-        
-    }
-    
+
     func fetchUser() {
         guard let uid = userSession?.id else { return }
         print("DEBUG: uid \(uid)")

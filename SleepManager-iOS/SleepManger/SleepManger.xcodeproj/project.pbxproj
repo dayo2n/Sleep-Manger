@@ -32,13 +32,16 @@
 		BF62CDEE2845007300A84123 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDED2845007300A84123 /* RegistrationView.swift */; };
 		BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDEF2845052700A84123 /* CustomTextField.swift */; };
 		BF62CDF22845053A00A84123 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDF12845053A00A84123 /* CustomSecureField.swift */; };
-		BF62CDF52845C6BC00A84123 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDF42845C6BC00A84123 /* Time.swift */; };
+		BF62CDF52845C6BC00A84123 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62CDF42845C6BC00A84123 /* Sleep.swift */; };
 		BFE5A860280C43F400A0022F /* ModalNewDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */; };
 		BFE5A863280C4AB800A0022F /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = BFE5A862280C4AB800A0022F /* PartialSheet */; };
 		BFE985642847470900AEA19C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985632847470900AEA19C /* Alamofire */; };
 		BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9856628474A3C00AEA19C /* AuthViewModel.swift */; };
 		BFE9856A2847638300AEA19C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = BFE985692847638300AEA19C /* SwiftyJSON */; };
 		BFE9856D2847732B00AEA19C /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9856C2847732B00AEA19C /* HeaderViewModel.swift */; };
+		BFEFF6E02848AB40008381FC /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFF6DF2848AB40008381FC /* SleepViewModel.swift */; };
+		BFEFF6E32849DC05008381FC /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFF6E22849DC05008381FC /* HistoryViewModel.swift */; };
+		BFEFF6E52849F9F9008381FC /* ManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFF6E42849F9F9008381FC /* ManageViewModel.swift */; };
 		BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C62811511200A1A5FC /* AlarmCell.swift */; };
 		BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6C82811B86800A1A5FC /* PopupView.swift */; };
 		BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */; };
@@ -73,10 +76,13 @@
 		BF62CDEF2845052700A84123 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BF62CDF12845053A00A84123 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		BF62CDF32845C00F00A84123 /* RoutineManger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RoutineManger-Info.plist"; sourceTree = "<group>"; };
-		BF62CDF42845C6BC00A84123 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		BF62CDF42845C6BC00A84123 /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
 		BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNewDrinkView.swift; sourceTree = "<group>"; };
 		BFE9856628474A3C00AEA19C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		BFE9856C2847732B00AEA19C /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		BFEFF6DF2848AB40008381FC /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
+		BFEFF6E22849DC05008381FC /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		BFEFF6E42849F9F9008381FC /* ManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewModel.swift; sourceTree = "<group>"; };
 		BFF8F6C62811511200A1A5FC /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		BFF8F6C82811B86800A1A5FC /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupView.swift; path = ../../../PopupView.swift; sourceTree = "<group>"; };
 		BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSleepButton.swift; sourceTree = "<group>"; };
@@ -159,8 +165,11 @@
 		BF46C8C6280A67C000F561A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BFEFF6E12849DBE4008381FC /* History */,
 				BFE9856B2847732100AEA19C /* Today */,
 				BFE9856528474A2A00AEA19C /* Authentification */,
+				BFEFF6DF2848AB40008381FC /* SleepViewModel.swift */,
+				BFEFF6E42849F9F9008381FC /* ManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -182,7 +191,7 @@
 			children = (
 				BF2237A928282CA200BBD8E5 /* DateValue.swift */,
 				BF62CDE22844F76A00A84123 /* User.swift */,
-				BF62CDF42845C6BC00A84123 /* Time.swift */,
+				BF62CDF42845C6BC00A84123 /* Sleep.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +264,14 @@
 				BFE9856C2847732B00AEA19C /* HeaderViewModel.swift */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		BFEFF6E12849DBE4008381FC /* History */ = {
+			isa = PBXGroup;
+			children = (
+				BFEFF6E22849DC05008381FC /* HistoryViewModel.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,14 +368,17 @@
 				BF46C8DE280A7B7B00F561A4 /* RoutineCell.swift in Sources */,
 				BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */,
 				BF0446D0280DCEFA00D05C9D /* ModalManageCoffeeRoutine.swift in Sources */,
+				BFEFF6E52849F9F9008381FC /* ManageViewModel.swift in Sources */,
 				BFE5A860280C43F400A0022F /* ModalNewDrinkView.swift in Sources */,
 				BF0446CE280DC30500D05C9D /* ModalManageWaterRoutine.swift in Sources */,
 				BFF8F6CB2811B97B00A1A5FC /* SetSleepButton.swift in Sources */,
+				BFEFF6E32849DC05008381FC /* HistoryViewModel.swift in Sources */,
 				BF2237A6282828E000BBD8E5 /* CalendarView.swift in Sources */,
 				BFF8F6C92811B86800A1A5FC /* PopupView.swift in Sources */,
-				BF62CDF52845C6BC00A84123 /* Time.swift in Sources */,
+				BF62CDF52845C6BC00A84123 /* Sleep.swift in Sources */,
 				BF62CDEC2845006600A84123 /* LoginView.swift in Sources */,
 				BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */,
+				BFEFF6E02848AB40008381FC /* SleepViewModel.swift in Sources */,
 				BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */,
 				BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */,
 				BF46C8D3280A68F000F561A4 /* HistoryView.swift in Sources */,

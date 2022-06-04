@@ -38,7 +38,7 @@ struct LoginView: View {
                         
                         // sign in
                         Button(action: {
-//                            viewModel.login(withEmail: email)
+                            viewModel.login(withEmail: email)
                         }, label: {
                             Text("Sign in")
                                 .font(.headline)
