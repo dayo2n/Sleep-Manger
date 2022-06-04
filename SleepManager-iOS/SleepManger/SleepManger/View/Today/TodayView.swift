@@ -7,14 +7,15 @@
 
 import SwiftUI
 import PartialSheet
-import SunburstDiagram
 
 struct TodayView: View {
     
-    @State private var wakeUp : Bool = false
-    @State private var date: Date = Date()
+    @State private var setButton : Bool = false
+    @State private var sleepTime: Date = Date()
+    @State private var wakeUpTime: Date = Date()
     
     let user: User
+    @ObservedObject var viewModel : HistoryViewModel
 
     
     var body: some View {
@@ -47,19 +48,10 @@ struct TodayView: View {
                     .padding()
                     
                     HStack {
-                        let configuration = SunburstConfiguration(nodes: [
-                            Node(name: "Walking", value: 10.0, backgroundColor: .systemBlue),
-                            Node(name: "Restaurant", value: 30.0, backgroundColor: .systemRed, children: [
-                                Node(name: "Dessert", image: UIImage(named: "croissant"), value: 6.0),
-                                Node(name: "Dinner", image: UIImage(named: "poultry"), value: 10.0),
-                            ]),
-                            Node(name: "Transport", value: 10.0, backgroundColor: .systemPurple),
-                            Node(name: "Home", value: 50.0, backgroundColor: .systemTeal),
-                        ])
 
 //                        SetSleepButton()
                         Button(action: {
-                            wakeUp = true
+                            setButton = true
                         }, label: {
                             VStack {
                                 Text("Wake up")
@@ -99,26 +91,43 @@ struct TodayView: View {
         }
         .background(Color("bgColor"))
         .attachPartialSheetToRoot()
-        .popup(isPresented: $wakeUp,animation: Animation.linear(duration: 0), closeOnTap: false) {
+        .popup(isPresented: $setButton,animation: Animation.linear(duration: 0), closeOnTap: false) {
             ZStack {
                 
                 Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     HStack {
-                        Text("기상시간 설정")
-                            .font(.system(size: 25, weight: .bold))
+                        Text("취침, 기상시간 기록")
+                            .font(.system(size: 20, weight: .bold))
                             .padding(.leading, 20)
                         Spacer()
                     }
                     
-                    DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
-                        .labelsHidden()
-                        .frame(width: 100, height: 50)
-                        .padding()
+                    HStack {
+                        VStack {
+                            Text("취침 시간")
+                                .padding(.top)
+                            
+                            DatePicker("", selection: $sleepTime, displayedComponents: .hourAndMinute)
+                                .labelsHidden()
+                                .frame(width: 100, height: 50)
+                                .padding([.leading, .trailing, .bottom])
+                        }
+
+                        VStack {
+                            Text("기상 시간")
+                                .padding(.top)
+                            
+                            DatePicker("", selection: $wakeUpTime, displayedComponents: .hourAndMinute)
+                                .labelsHidden()
+                                .frame(width: 100, height: 50)
+                                .padding([.leading, .trailing, .bottom])
+                        }
+                    }
                     
                     Button(action: {
-                        wakeUp = false
+                        setButton = false
                     }, label: {
                         Text("Done")
                             .foregroundColor(Color("fontColor"))
@@ -128,7 +137,7 @@ struct TodayView: View {
                     })
 
                 }
-                .frame(width: 350, height: 220)
+                .frame(width: 350, height: 250)
                 .background(Color("bgColor"))
                 .cornerRadius(10)
             }
