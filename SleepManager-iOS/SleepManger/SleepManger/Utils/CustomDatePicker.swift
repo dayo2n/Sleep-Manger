@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomDatePicker: View {
     
     @Binding var currentDate: Date
+    @ObservedObject var viewModel: HistoryViewModel
     
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
@@ -66,7 +67,7 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns) {
                 ForEach(extractDate()) { value in
-                    NavigationLink (destination: HistoryView(historyDate: value), label: {
+                    NavigationLink (destination: HistoryView(historyDate: value, viewModel: viewModel), label: {
                         CardView(value: value)
                             .frame(height: 70, alignment: .top)
                     })
