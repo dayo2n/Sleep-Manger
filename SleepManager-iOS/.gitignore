@@ -117,4 +117,5 @@ iOSInjectionProject/
 
 .DS_Store
 *.plist
+Storage.swift
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods,firebase
