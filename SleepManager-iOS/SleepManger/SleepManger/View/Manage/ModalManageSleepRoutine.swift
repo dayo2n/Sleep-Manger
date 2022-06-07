@@ -17,10 +17,10 @@ struct ModalManageSleepRoutine: View {
     @ObservedObject var viewModel : ManageViewModel
     
     func fetchGoals() {
-        sleepGoalTime = TimeString2Date(date: viewModel.sleepGoal.goalBedTime)
-        wakeUpGoalTime = TimeString2Date(date: viewModel.sleepGoal.goalWakeUpTime)
+        sleepGoalTime = TimeString2Date(time: viewModel.sleepGoal.goalBedTime)
+        wakeUpGoalTime = TimeString2Date(time: viewModel.sleepGoal.goalWakeUpTime)
+        print(sleepGoalTime)
     }
-
     
     var body: some View {
         VStack {
@@ -52,7 +52,7 @@ struct ModalManageSleepRoutine: View {
                 Text("예상 수면 시간 총")
                     .multilineTextAlignment(.center)
                 
-                Text("8H 00M")
+                Text("\(getTimeDiff(from:Date2TimeString(date: sleepGoalTime), to:Date2TimeString(date: wakeUpGoalTime)))")
                     .font(.system(size: 20, weight: .bold))
                     .underline()
                     .padding(.bottom, 5)

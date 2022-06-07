@@ -20,8 +20,8 @@ func Date2TimeString(date: Date) -> String {
 }
 
 // "00:00" 형식의 문자열을 "2000년 1월 1일의 00:00:00"의 Date 타입으로 리턴
-func TimeString2Date(date: String) -> Date {
-    let splitTime = date.split(separator: ":")
+func TimeString2Date(time: String) -> Date {
+    let splitTime = time.split(separator: ":")
     let stringTime = "2000-01-01 \(splitTime[0]):\(splitTime[1]):00"
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

@@ -22,8 +22,13 @@ struct TodayView: View {
         self.viewModel = viewModel
     }
     
+    // 로그인 후 화면 첫 전환시 query가 되지않고 nil값이 들어옴 (추후 수정)
     func fetchTodayData() {
         viewModel.queryDaySleep(date: "2022-06-07")
+        if viewModel.daySleepRecord != nil {
+            sleepTime = TimeString2Date(time: viewModel.daySleepRecord!.bedTime)
+            wakeUpTime = TimeString2Date(time: viewModel.daySleepRecord!.wakeUpTime)
+        }
     }
     
     var body: some View {
@@ -64,7 +69,7 @@ struct TodayView: View {
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
-                                if viewModel.daySleepRecord?.bedTime == "0" {
+                                if viewModel.daySleepRecord?.bedTime == nil {
                                     Image("hand")
                                         .resizable()
                                         .scaledToFit()

@@ -16,7 +16,7 @@ class ManageViewModel: ObservableObject {
     
     init() {
         self.sleepGoal = SleepGoal(goalBedTime: defaultTime, goalWakeUpTime: defaultTime, weekendGoalBedTime: defaultTime, weekendGoalWakeUpTime: defaultTime)
-//        getSleepGoal()
+        getSleepGoal()
     }
     
     // 목표 취침, 기상 시간 조회
