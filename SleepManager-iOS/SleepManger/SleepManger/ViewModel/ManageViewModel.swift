@@ -16,14 +16,14 @@ class ManageViewModel: ObservableObject {
     
     init() {
         self.sleepGoal = SleepGoal(goalBedTime: defaultTime, goalWakeUpTime: defaultTime, weekendGoalBedTime: defaultTime, weekendGoalWakeUpTime: defaultTime)
-        getSleepGoal()
+//        getSleepGoal()
     }
     
     // 목표 취침, 기상 시간 조회
     func getSleepGoal() {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
         
-            let url = "http://3.39.141.189:8080/sleeps/goals?id=\(uid)"
+        let url = "\(Storage().SERVER_URL)/sleeps/goals?id=\(uid)"
             AF.request(url,
                        method: .get,
                        parameters: nil,
@@ -44,7 +44,7 @@ class ManageViewModel: ObservableObject {
                             print("⚠️ DEBUG on getSleepGoal(): Maybe this user has no data \(error.localizedDescription)")
                         }
                     case .failure :
-                        print("🚫 DEBUG on getSleepGoal():")
+                        print("🚫 DEBUG on getSleepGoal(): \(response)")
             }
         }
     }
@@ -53,7 +53,7 @@ class ManageViewModel: ObservableObject {
     func setSleepGoal(newSleepGoal: SleepGoal) {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
         
-        let url = "http://3.39.141.189:8080/sleeps/goals"
+        let url = "\(Storage().SERVER_URL)/sleeps/goals"
         let params: Parameters = ["id": uid,
                                   "goalBedTime" : newSleepGoal.goalBedTime ,
                                   "goalWakeUpTime" : newSleepGoal.goalWakeUpTime,

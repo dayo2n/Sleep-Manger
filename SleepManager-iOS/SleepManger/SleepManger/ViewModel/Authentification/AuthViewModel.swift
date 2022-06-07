@@ -24,7 +24,7 @@ class AuthViewModel: ObservableObject {
     
     
     func login(withEmail email: String) {
-        let url = "http://3.39.141.189:8080/members/login"
+        let url = "\(Storage().SERVER_URL)/members/login"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -60,7 +60,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func register(withEmail email: String) {
-        let url = "http://3.39.141.189:8080/members"
+        let url = "\(Storage().SERVER_URL)/members"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
