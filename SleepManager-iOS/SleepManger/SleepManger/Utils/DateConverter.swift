@@ -65,6 +65,16 @@ func getTimeDiff(from: String, to: String) -> String {
     } else {
         retMin = toMin - fromMin
     }
+    if retHour < 10 {
+        if retMin < 10 {
+            return "0\(retHour):0\(retMin)"
+        } else {
+            return "0\(retHour):\(retMin)"
+        }
+    }
+    if retMin < 10 {
+        return "\(retHour):0\(retMin)"
+    }
     
     return "\(retHour):\(retMin)"
 }
