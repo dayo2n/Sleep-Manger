@@ -80,7 +80,7 @@ class HistoryViewModel: ObservableObject {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
         
         var queryResult = Sleep(wakeUpTime: defaultTime, bedTime: defaultTime, date: date)
-        let url = "\(Storage().SERVER_URL)/sleeps/day?id=\(uid)&date=\(date)"
+        let url = "\(Storage().SERVER_URL)/sleeps/period?id=\(uid)&date=\(date)&offset=\(offset)"
         AF.request(url,
                    method: .get,
                    parameters: nil,
@@ -91,17 +91,17 @@ class HistoryViewModel: ObservableObject {
                 switch response.result {
                 case .success(let record) :
                     let json = record.data(using: .utf8)!
-                    for data in json {
-                        do {
-                            
-                            // 배열로 받은 결과데이터 배열에 추가할 수 있도록
-//                            let daySleep = try JSONDecoder().decode(Sleep.self, from: data)
-                            
-//                            print("✅ DEBUG: \(daySleep.wakeUpTime) \(daySleep.bedTime)")
-                            
-                        } catch (let error ) {
-                            print("🚫 DEBUG on queryWeekSleep(): \(error.localizedDescription)")
+                    print(record)
+                    do {
+                        // 배열로 받은 결과데이터 배열에 추가할 수 있도록
+                        let bundleData = try JSONDecoder().decode([Sleep].self, from: json)
+                        for singleData in bundleData {
+                            self.offsetSleepRecord.append(Sleep(wakeUpTime: singleData.wakeUpTime, bedTime: singleData.bedTime, date: singleData.date))
                         }
+                        print("✅ DEBUG on queryWeekSleep(): \(bundleData)")
+                        
+                    } catch (let error ) {
+                        print("🚫 DEBUG on queryWeekSleep(): \(error.localizedDescription)")
                     }
                     
                 case .failure :

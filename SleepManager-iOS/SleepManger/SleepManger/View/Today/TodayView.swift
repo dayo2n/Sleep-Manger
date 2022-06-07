@@ -24,7 +24,7 @@ struct TodayView: View {
     
     // 로그인 후 화면 첫 전환시 query가 되지않고 nil값이 들어옴 (추후 수정)
     func fetchTodayData() {
-        viewModel.queryDaySleep(date: "2022-06-07")
+        viewModel.queryDaySleep(date: Date2OnlyDate(date: Date()))
         if viewModel.daySleepRecord != nil {
             sleepTime = TimeString2Date(time: viewModel.daySleepRecord!.bedTime)
             wakeUpTime = TimeString2Date(time: viewModel.daySleepRecord!.wakeUpTime)

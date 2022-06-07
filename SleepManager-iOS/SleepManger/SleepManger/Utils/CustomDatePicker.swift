@@ -14,6 +14,11 @@ struct CustomDatePicker: View {
     
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
+    
+    func fetchMonthData() {
+        viewModel.queryWeekSleep(date: "2022-06-02", offset: 3)
+    }
+    
     var body: some View {
         VStack() {
             
@@ -77,6 +82,9 @@ struct CustomDatePicker: View {
         .onChange(of: currentMonth) { newValue in
             // updating Month
             currentDate = getCurrentMonth()
+        }
+        .onAppear {
+            fetchMonthData()
         }
     }
     
