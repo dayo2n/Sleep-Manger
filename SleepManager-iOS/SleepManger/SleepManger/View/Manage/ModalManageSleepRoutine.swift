@@ -17,41 +17,8 @@ struct ModalManageSleepRoutine: View {
     @ObservedObject var viewModel : ManageViewModel
     
     func fetchGoals() {
-        let splitSleepGoalTime = viewModel.sleepGoal.goalBedTime.split(separator: ":")
-        let stringSleepGoalTime = "2000-01-01 \(splitSleepGoalTime[0]):\(splitSleepGoalTime[1]):00"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        sleepGoalTime = dateFormatter.date(from: stringSleepGoalTime) ?? Date()
-        
-        
-        let splitWakeUpGoalTime = viewModel.sleepGoal.goalWakeUpTime.split(separator: ":")
-        let stringWakeUpGoalTime = "2000-01-01 \(splitWakeUpGoalTime[0]):\(splitWakeUpGoalTime[1]):00"
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        wakeUpGoalTime = dateFormatter.date(from: stringWakeUpGoalTime) ?? Date()
-    }
-    
-    func Date2String() -> [String] {
-        
-        print("🔹 DEBUG: new sleep goal \(sleepGoalTime), \n new wake-up goal \(wakeUpGoalTime)")
-        
-        
-        var newGoals : [String] = [] // [new sleep goal time hour, min, new wake-up goal time hour, min]
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        let splitOnlySleepTime = dateFormatter.string(from: sleepGoalTime).split(separator: " ")
-        let splitNewSleepGoalTime = splitOnlySleepTime[1].split(separator: ":")
-        newGoals.append("\(splitNewSleepGoalTime[0])")
-        newGoals.append("\(splitNewSleepGoalTime[1])")
-        
-        let splitOnlyWakeUpTime = dateFormatter.string(from: wakeUpGoalTime).split(separator: " ")
-        let splitNewWakeUpGoalTime = splitOnlyWakeUpTime[1].split(separator: ":")
-        newGoals.append("\(splitNewWakeUpGoalTime[0])")
-        newGoals.append("\(splitNewWakeUpGoalTime[1])")
-        return newGoals
+        sleepGoalTime = TimeString2Date(date: viewModel.sleepGoal.goalBedTime)
+        wakeUpGoalTime = TimeString2Date(date: viewModel.sleepGoal.goalWakeUpTime)
     }
 
     
@@ -98,8 +65,9 @@ struct ModalManageSleepRoutine: View {
                 .padding(.bottom, 10)
             Button(action: {
                 isPresented = false
-                let newGoalTime = Date2String()
-                viewModel.setSleepGoal(newSleepGoal: SleepGoal(goalBedTime: "\(newGoalTime[0]):\(newGoalTime[1])", goalWakeUpTime: "\(newGoalTime[2]):\(newGoalTime[3])", weekendGoalBedTime: "\(newGoalTime[0]):\(newGoalTime[1])", weekendGoalWakeUpTime: "\(newGoalTime[2]):\(newGoalTime[3])"))
+                let newSleepGoalTime = Date2TimeString(date: sleepGoalTime)
+                let newWakeUpGoalTime = Date2TimeString(date: wakeUpGoalTime)
+                viewModel.setSleepGoal(newSleepGoal: SleepGoal(goalBedTime: newSleepGoalTime, goalWakeUpTime: newWakeUpGoalTime, weekendGoalBedTime: newSleepGoalTime, weekendGoalWakeUpTime: newWakeUpGoalTime))
             }, label: {
                 Text("Done")
                     .foregroundColor(Color("fontColor"))

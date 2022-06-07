@@ -13,6 +13,7 @@
 		BF2237A6282828E000BBD8E5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2237A5282828E000BBD8E5 /* CalendarView.swift */; };
 		BF2237A828282A6000BBD8E5 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */; };
 		BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2237A928282CA200BBD8E5 /* DateValue.swift */; };
+		BF2482A7284F751900AA5477 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2482A6284F751900AA5477 /* Storage.swift */; };
 		BF46C8B7280A675E00F561A4 /* RoutineMangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */; };
 		BF46C8B9280A675E00F561A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B8280A675E00F561A4 /* ContentView.swift */; };
 		BF46C8BB280A675F00F561A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF46C8BA280A675F00F561A4 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		BF2237A5282828E000BBD8E5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		BF2237A928282CA200BBD8E5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
+		BF2482A6284F751900AA5477 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BF46C8B3280A675E00F561A4 /* SleepManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineMangerApp.swift; sourceTree = "<group>"; };
 		BF46C8B8280A675E00F561A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		BF46C8C5280A67B900F561A4 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BF2482A6284F751900AA5477 /* Storage.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				BF46C8D3280A68F000F561A4 /* HistoryView.swift in Sources */,
 				BF46C8CF280A688A00F561A4 /* MainTabView.swift in Sources */,
 				BF46C8D6280A692900F561A4 /* TodayView.swift in Sources */,
+				BF2482A7284F751900AA5477 /* Storage.swift in Sources */,
 				BF46C8D1280A68D300F561A4 /* ManageView.swift in Sources */,
 				BF0446D2280DCF0900D05C9D /* ModalManageSleepRoutine.swift in Sources */,
 				BF46C8D8280A6B6300F561A4 /* SleepCell.swift in Sources */,

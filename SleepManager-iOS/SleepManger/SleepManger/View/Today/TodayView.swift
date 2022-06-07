@@ -17,6 +17,14 @@ struct TodayView: View {
     let user: User
     @ObservedObject var viewModel : HistoryViewModel
 
+    init(user: User, viewModel: HistoryViewModel) {
+        self.user = user
+        self.viewModel = viewModel
+    }
+    
+    func fetchTodayData() {
+        viewModel.queryDaySleep(date: "2022-06-07")
+    }
     
     var body: some View {
         ScrollView {
@@ -31,9 +39,7 @@ struct TodayView: View {
                     
                     Spacer()
                 }
-                
-        //                SleepCell()
-        //                    .cornerRadius(20)
+
                 VStack(alignment: .leading) {
                     HStack {
                         Image("sleeping")
@@ -44,25 +50,27 @@ struct TodayView: View {
                         
                         Text("Sleep well")
                             .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.black)
                     }
                     .padding()
                     
                     HStack {
-
-//                        SetSleepButton()
+                        
                         Button(action: {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text("Wake up")
+                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime, to:viewModel.daySleepRecord!.wakeUpTime))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
-                                    
-                                Image("hand")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 30, height: 30)
-                                    .clipped()
+                                
+                                if viewModel.daySleepRecord?.bedTime == "0" {
+                                    Image("hand")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                        .clipped()
+                                }
                             }
                                 .frame(width: 120, height: 120)
                                 .background(.white)
@@ -127,6 +135,11 @@ struct TodayView: View {
                     }
                     
                     Button(action: {
+                        guard let uid = AuthViewModel.shared.userSession?.id else { return }
+                        let wakeUp = Date2TimeString(date: wakeUpTime)
+                        let sleep = Date2TimeString(date: sleepTime)
+                        let recordDate = Date2OnlyDate(date: Date())
+                        viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: recordDate))
                         setButton = false
                     }, label: {
                         Text("Done")
@@ -141,6 +154,9 @@ struct TodayView: View {
                 .background(Color("bgColor"))
                 .cornerRadius(10)
             }
+        }
+        .onAppear() {
+            fetchTodayData()
         }
     }
 }

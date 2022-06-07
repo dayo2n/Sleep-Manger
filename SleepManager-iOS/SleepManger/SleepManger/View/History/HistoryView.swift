@@ -11,7 +11,17 @@ import SunburstDiagram
 
 struct HistoryView: View {
     
-    var historyDate: DateValue
+    var historyDate : DateValue
+    @ObservedObject var viewModel : HistoryViewModel
+    @State private var setButton : Bool = false
+    @State private var sleepTime: Date = Date()
+    @State private var wakeUpTime: Date = Date()
+    
+    
+    init(historyDate: DateValue, viewModel: HistoryViewModel) {
+        self.historyDate = historyDate
+        self.viewModel = viewModel
+    }
     
     let dateformat: DateFormatter = {
         let formatter = DateFormatter()
@@ -19,11 +29,15 @@ struct HistoryView: View {
         return formatter
     }()
     
+    func fetchHistoryData() {
+        viewModel.queryDaySleep(date: Date2OnlyDate(date: historyDate.date))
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
                 HStack {
-                    NavigationLink(destination: CalendarView(), label: {
+                    NavigationLink(destination: CalendarView(viewModel: viewModel), label: {
                         Text("\(historyDate.date, formatter: self.dateformat)'s Routine")
                             .font(.system(size: 30, weight: .semibold))
                             .foregroundColor(Color("fontColor"))
@@ -41,33 +55,26 @@ struct HistoryView: View {
                         
                         Text("Sleep well")
                             .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.black)
                     }
                     .padding()
                     
                     HStack {
-                        let configuration = SunburstConfiguration(nodes: [
-                            Node(name: "Walking", value: 10.0, backgroundColor: .systemBlue),
-                            Node(name: "Restaurant", value: 30.0, backgroundColor: .systemRed, children: [
-                                Node(name: "Dessert", image: UIImage(named: "croissant"), value: 6.0),
-                                Node(name: "Dinner", image: UIImage(named: "poultry"), value: 10.0),
-                            ]),
-                            Node(name: "Transport", value: 10.0, backgroundColor: .systemPurple),
-                            Node(name: "Home", value: 50.0, backgroundColor: .systemTeal),
-                        ])
-
-//                        SetSleepButton()
                         Button(action: {
+                            setButton = true
                         }, label: {
                             VStack {
-                                Text("Wake up")
+                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime, to:viewModel.daySleepRecord!.wakeUpTime))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
-                                    
-                                Image("hand")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 30, height: 30)
-                                    .clipped()
+                                
+                                if viewModel.daySleepRecord?.bedTime == "0" {
+                                    Image("hand")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                        .clipped()
+                                }
                             }
                                 .frame(width: 120, height: 120)
                                 .background(.white)
@@ -76,7 +83,9 @@ struct HistoryView: View {
                                 .padding(.leading, 20)
                         })
                         
-                        Button(action: {}, label: {
+                        Button(action: {
+                            
+                        }, label: {
                             Text("Week's Sleep")
                                 .foregroundColor(.black)
                                 .frame(width: 120, height: 120)
@@ -95,5 +104,65 @@ struct HistoryView: View {
             }
         }
         .background(Color("bgColor"))
+        .attachPartialSheetToRoot()
+        .popup(isPresented: $setButton,animation: Animation.linear(duration: 0), closeOnTap: false) {
+            ZStack {
+                
+                Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    HStack {
+                        Text("취침, 기상시간 기록")
+                            .font(.system(size: 20, weight: .bold))
+                            .padding(.leading, 20)
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        VStack {
+                            Text("취침 시간")
+                                .padding(.top)
+                            
+                            DatePicker("", selection: $sleepTime, displayedComponents: .hourAndMinute)
+                                .labelsHidden()
+                                .frame(width: 100, height: 50)
+                                .padding([.leading, .trailing, .bottom])
+                        }
+
+                        VStack {
+                            Text("기상 시간")
+                                .padding(.top)
+                            
+                            DatePicker("", selection: $wakeUpTime, displayedComponents: .hourAndMinute)
+                                .labelsHidden()
+                                .frame(width: 100, height: 50)
+                                .padding([.leading, .trailing, .bottom])
+                        }
+                    }
+                    
+                    Button(action: {
+                        guard let uid = AuthViewModel.shared.userSession?.id else { return }
+                        let wakeUp = Date2TimeString(date: wakeUpTime)
+                        let sleep = Date2TimeString(date: sleepTime)
+                        let recordDate = Date2OnlyDate(date: historyDate.date)
+                        viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: recordDate))
+                        setButton = false
+                    }, label: {
+                        Text("Done")
+                            .foregroundColor(Color("fontColor"))
+                            .frame(width: 300, height: 50)
+                            .background(Color("btnColor"))
+                            .cornerRadius(10)
+                    })
+
+                }
+                .frame(width: 350, height: 250)
+                .background(Color("bgColor"))
+                .cornerRadius(10)
+            }
+        }
+        .onAppear() {
+            fetchHistoryData()
+        }
     }
 }

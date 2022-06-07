@@ -63,11 +63,11 @@ class HistoryViewModel: ObservableObject {
                     do {
                         let daySleep = try JSONDecoder().decode(Sleep.self, from: json)
                         
-                        print("✅ DEBUG on queryDaySleep(): \(daySleep.wakeUpTime) \(daySleep.bedTime)")
+                        print("✅ DEBUG on queryDaySleep(): \(date)'s sleep \(daySleep.bedTime) | wake-up \(daySleep.wakeUpTime)")
                         self.daySleepRecord = Sleep(wakeUpTime: daySleep.wakeUpTime, bedTime: daySleep.bedTime, date: date)
                         
                     } catch (let error ) {
-                        print("🚫 DEBUG on queryDaySleep(): \(json) \(error.localizedDescription)")
+                        print("🚫 DEBUG on queryDaySleep(): \(record) \(error.localizedDescription)")
                     }
                 case .failure :
                     print("🚫 DEBUG on queryDaySleep(): \(response)")

@@ -10,20 +10,15 @@ import SwiftUI
 struct CalendarView: View {
     
     @State var currentDate: Date = Date()
+    @ObservedObject var viewModel : HistoryViewModel
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 20) {
                 // Custom Date Picker
-                CustomDatePicker(currentDate: $currentDate)
+                CustomDatePicker(currentDate: $currentDate, viewModel: viewModel)
             }
             .padding(.vertical)
         }
-    }
-}
-
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
     }
 }

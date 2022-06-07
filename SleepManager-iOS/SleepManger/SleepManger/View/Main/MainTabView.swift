@@ -10,15 +10,16 @@ import SwiftUI
 struct MainTabView: View {
     
     let user: User
+    @ObservedObject var viewModel = HistoryViewModel()
     
     var body: some View {
         NavigationView {
             TabView {
-                TodayView(user: user)
+                TodayView(user: user, viewModel: viewModel)
                     .tabItem {
                         Image(systemName: "flame")
                     }
-                CalendarView()
+                CalendarView(viewModel: viewModel)
                     .tabItem {
                         Image(systemName: "clock")
                 }

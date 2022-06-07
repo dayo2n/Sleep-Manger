@@ -23,6 +23,7 @@ struct DrinkCell: View {
                 
                 Text("Drink well")
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black)
             }
             .padding()
             

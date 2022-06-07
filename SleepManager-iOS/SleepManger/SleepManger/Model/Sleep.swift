@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Sleep: Identifiable, Codable {
-    let id: Int
+struct Sleep: Codable {
     var wakeUpTime: String // HH:MM 형식
     var bedTime: String // HH:MM
     var date: String
