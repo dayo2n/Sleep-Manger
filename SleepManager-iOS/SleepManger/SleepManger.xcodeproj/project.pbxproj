@@ -205,8 +205,8 @@
 		BF46C8C9280A681000F561A4 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				BF46C8D2280A68F000F561A4 /* HistoryView.swift */,
 				BF2237A5282828E000BBD8E5 /* CalendarView.swift */,
+				BF46C8D2280A68F000F561A4 /* HistoryView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";

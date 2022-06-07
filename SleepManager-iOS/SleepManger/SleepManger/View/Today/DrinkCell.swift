@@ -34,7 +34,6 @@ struct DrinkCell: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 36, height: 36)
-                            .shadow(radius: 5)
                             .clipped()
                     })
                 }
@@ -47,7 +46,6 @@ struct DrinkCell: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 36, height: 36)
-                            .shadow(radius: 5)
                             .clipped()
                             .partialSheet(isPresented: $showDrinkModal) {
                                 ModalNewDrinkView(isPresented: self.$showDrinkModal)

@@ -58,7 +58,6 @@ struct ManageView: View {
                                         .frame(width: 130, height: 120)
                                         .padding()
                                         .background(Color("cellColor"))
-                                        .shadow(radius: 10)
                                         .cornerRadius(20)
                                         .padding(.bottom, 20)
                                 }
@@ -75,7 +74,6 @@ struct ManageView: View {
                             .frame(width: 130, height: 120)
                             .padding()
                             .background(Color("cellColor"))
-                            .shadow(radius: 10)
                             .cornerRadius(20)
                             .padding(.bottom, 20)
                             .partialSheet(isPresented: self.$showAddModal) {
