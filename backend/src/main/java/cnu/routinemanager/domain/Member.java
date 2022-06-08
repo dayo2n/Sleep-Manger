@@ -28,6 +28,9 @@ public class Member {
     @OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Sleep> sleeps = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DrinkNotificationTime> drinkNotificationTimes = new ArrayList<>();
+
     public Member(String email) {
         this.email = email;
     }
@@ -42,5 +45,10 @@ public class Member {
         goalSleep.setGoalWakeUpTime(goalWakeUpTime);
         goalSleep.setWeekendGoalBedTime(weekendGoalBedTime);
         goalSleep.setWeekendGoalWakeUpTime(weekendGoalWakeUpTime);
+    }
+
+    public void setDrinkNotificationTimes(List<DrinkNotificationTime> drinkNotificationTimes) {
+        this.drinkNotificationTimes.clear();
+        this.drinkNotificationTimes.addAll(drinkNotificationTimes);
     }
 }

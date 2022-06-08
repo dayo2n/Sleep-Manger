@@ -38,4 +38,8 @@ public class MemberService {
 
         return new LoginResponse(member.getId(), member.getEmail());
     }
+
+    public boolean existsById(Long memberId) {
+        return memberRepository.existsById(memberId);
+    }
 }
