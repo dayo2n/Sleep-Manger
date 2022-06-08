@@ -34,4 +34,9 @@ public class Sleep {
         this.wakeUpTime = wakeUpTime;
         this.date = date;
     }
+
+    public void modifyDaySleepRecord(LocalTime bedTime, LocalTime wakeUpTime) {
+        this.bedTime = bedTime;
+        this.wakeUpTime = wakeUpTime;
+    }
 }

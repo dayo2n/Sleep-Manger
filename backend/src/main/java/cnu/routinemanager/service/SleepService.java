@@ -61,4 +61,11 @@ public class SleepService {
                      .map(sleep -> new DaySleepRecordResponse(sleep.getDate(), sleep.getBedTime(), sleep.getWakeUpTime()))
                      .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void modifyDaySleepRecord(DaySleepRecordRequest daySleepRecordRequest) {
+        Sleep sleep = sleepRepository.findByMemberIdAndDate(daySleepRecordRequest.getId(), daySleepRecordRequest.getDate())
+                                     .orElseThrow(() -> new SleepException("해당 날짜의 수면 기록이 존재하지 않습니다.", HttpStatus.NOT_FOUND));
+        sleep.modifyDaySleepRecord(daySleepRecordRequest.getBedTime(), daySleepRecordRequest.getWakeUpTime());
+    }
 }

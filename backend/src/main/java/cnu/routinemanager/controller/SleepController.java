@@ -46,6 +46,12 @@ public class SleepController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PutMapping(value = "day")
+    public ResponseEntity<Void> modifyDaySleepRecord(@Valid @RequestBody DaySleepRecordRequest daySleepRecordRequest) {
+        sleepService.modifyDaySleepRecord(daySleepRecordRequest);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
     @GetMapping(value = "day")
     public ResponseEntity<DaySleepRecordResponse> findDaySleepRecord(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         DaySleepRecordResponse daySleepRecord = sleepService.findDaySleepRecord(id, date);
