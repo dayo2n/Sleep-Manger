@@ -29,4 +29,16 @@ public class Drink {
         this.amount = amount;
         this.date = date;
     }
+
+    public boolean hasSameDate(LocalDate date) {
+        return this.date.equals(date);
+    }
+
+    public void addAmount(int amount) {
+        this.amount += amount;
+    }
+
+    public void modifyAmount(int amount) {
+        this.amount = amount;
+    }
 }
