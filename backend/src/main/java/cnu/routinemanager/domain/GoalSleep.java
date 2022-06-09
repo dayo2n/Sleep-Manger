@@ -25,4 +25,11 @@ public class GoalSleep {
 
     @Column(columnDefinition = "time default 0")
     private LocalTime weekendGoalWakeUpTime;
+
+    public GoalSleep(LocalTime goalBedTime, LocalTime goalWakeUpTime, LocalTime weekendGoalBedTime, LocalTime weekendGoalWakeUpTime) {
+        this.goalBedTime = goalBedTime;
+        this.goalWakeUpTime = goalWakeUpTime;
+        this.weekendGoalBedTime = weekendGoalBedTime;
+        this.weekendGoalWakeUpTime = weekendGoalWakeUpTime;
+    }
 }

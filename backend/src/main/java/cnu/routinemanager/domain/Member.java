@@ -40,11 +40,8 @@ public class Member {
         this.email = email;
     }
 
-    public void setGoalSleep(LocalTime goalBedTime, LocalTime goalWakeUpTime, LocalTime weekendGoalBedTime, LocalTime weekendGoalWakeUpTime) {
-        goalSleep.setGoalBedTime(goalBedTime);
-        goalSleep.setGoalWakeUpTime(goalWakeUpTime);
-        goalSleep.setWeekendGoalBedTime(weekendGoalBedTime);
-        goalSleep.setWeekendGoalWakeUpTime(weekendGoalWakeUpTime);
+    public void setGoalSleep(GoalSleep goalSleep) {
+        this.goalSleep = goalSleep;
     }
 
     public void setDrinkNotificationTimes(List<DrinkNotificationTime> drinkNotificationTimes) {

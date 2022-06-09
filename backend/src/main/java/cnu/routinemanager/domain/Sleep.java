@@ -35,6 +35,14 @@ public class Sleep {
         this.date = date;
     }
 
+    public Sleep(Long id, Member member, LocalTime bedTime, LocalTime wakeUpTime, LocalDate date) {
+        this.id = id;
+        this.member = member;
+        this.bedTime = bedTime;
+        this.wakeUpTime = wakeUpTime;
+        this.date = date;
+    }
+
     public void modifyDaySleepRecord(LocalTime bedTime, LocalTime wakeUpTime) {
         this.bedTime = bedTime;
         this.wakeUpTime = wakeUpTime;
