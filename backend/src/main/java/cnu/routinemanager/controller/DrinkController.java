@@ -1,7 +1,10 @@
 package cnu.routinemanager.controller;
 
+import java.time.LocalDate;
+import java.util.List;
 import javax.validation.Valid;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import cnu.routinemanager.dto.request.DrinkNotificationTimeRequest;
 import cnu.routinemanager.dto.request.DrinkRecordRequest;
 import cnu.routinemanager.dto.response.DrinkNotificationTimeResponse;
+import cnu.routinemanager.dto.response.DrinkRecordResponse;
 import cnu.routinemanager.service.DrinkNotificationTimeService;
 import cnu.routinemanager.service.DrinkService;
 
@@ -55,16 +59,16 @@ public class DrinkController {
         drinkService.modifyDrinkRecord(drinkRecordRequest);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    //
-    //    @GetMapping(value = "day")
-    //    public ResponseEntity<DrinkRecordResponse> findDrinkRecord(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-    //        DrinkRecordResponse drinkRecord = drinkService.findDrinkRecord(id, date);
-    //        return ResponseEntity.ok().body(drinkRecord);
-    //    }
-    //
-    //    @GetMapping(value = "period")
-    //    public ResponseEntity<List<DrinkRecordResponse>> findDrinkRecord(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, int offset) {
-    //        List<DrinkRecordResponse> drinkRecord = drinkService.findDrinkRecord(id, date, offset);
-    //        return ResponseEntity.ok().body(drinkRecord);
-    //    }
+
+    @GetMapping(value = "day")
+    public ResponseEntity<DrinkRecordResponse> findDrinkRecord(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        DrinkRecordResponse drinkRecord = drinkService.findDrinkRecord(id, date);
+        return ResponseEntity.ok().body(drinkRecord);
+    }
+
+    @GetMapping(value = "period")
+    public ResponseEntity<List<DrinkRecordResponse>> findDrinkRecords(@RequestParam(value = "id") Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, int offset) {
+        List<DrinkRecordResponse> drinkRecord = drinkService.findDrinkRecord(id, date, offset);
+        return ResponseEntity.ok().body(drinkRecord);
+    }
 }

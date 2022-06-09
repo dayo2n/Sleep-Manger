@@ -1,9 +1,8 @@
 package cnu.routinemanager.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDate;
-import java.time.LocalTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class DrinkRecordResponse {
     @JsonFormat(pattern = "yyyy-MM-dd")

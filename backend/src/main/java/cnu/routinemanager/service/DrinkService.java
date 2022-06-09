@@ -57,14 +57,13 @@ public class DrinkService {
     public DrinkRecordResponse findDrinkRecord(Long memberId, LocalDate date) {
         Drink drinkRecord = drinkRepository.findByMemberIdAndDate(memberId, date)
                                            .orElseThrow(() -> new DrinkException("해당 날짜의 수분 섭취 기록이 존재하지 않습니다.", HttpStatus.NOT_FOUND));
-        //exception 만들어야함
+
         return new DrinkRecordResponse(date, drinkRecord.getAmount());
     }
 
     public List<DrinkRecordResponse> findDrinkRecord(Long memberId, LocalDate startDate, int offset) {
         LocalDate endDate = startDate.plusDays(offset);
-        List<Drink> drinkRecords = drinkRepository.findByMemberIdAndDateBetween(memberId, startDate, endDate);
-        drinkRecords.sort(Comparator.comparing(Drink::getDate));
+        List<Drink> drinkRecords = drinkRepository.findByMemberIdAndDateBetweenOrderByDate(memberId, startDate, endDate);
         return drinkRecords.stream()
                            .map(drinkRecord -> new DrinkRecordResponse(drinkRecord.getDate(), drinkRecord.getAmount()))
                            .collect(Collectors.toList());
