@@ -1,9 +1,9 @@
 package cnu.routinemanager.dto.request;
 
 import java.time.LocalTime;
-
 import javax.validation.constraints.NotNull;
 
+import cnu.routinemanager.domain.GoalSleep;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,4 +22,13 @@ public class GoalSleepTimeRequest {
     private LocalTime weekendGoalBedTime;
 
     private LocalTime weekendGoalWakeUpTime;
+
+    public GoalSleep toGoalSleep() {
+        return new GoalSleep(
+                goalBedTime,
+                goalWakeUpTime,
+                weekendGoalBedTime,
+                weekendGoalWakeUpTime
+        );
+    }
 }

@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface DrinkRepository extends JpaRepository<Drink, Long> {
     boolean existsByMemberIdAndDate(Long id, LocalDate date);
     Optional<Drink> findByMemberIdAndDate(Long memberId, LocalDate date);
-    List<Drink> findByMemberIdAndDateBetween(Long memberId, LocalDate startDate, LocalDate endDate);
+    List<Drink> findByMemberIdAndDateBetweenOrderByDate(Long memberId, LocalDate startDate, LocalDate endDate);
 }
