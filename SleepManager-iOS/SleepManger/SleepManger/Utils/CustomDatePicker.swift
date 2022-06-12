@@ -94,15 +94,14 @@ struct CustomDatePicker: View {
     @ViewBuilder
     func CardView(value: DateValue) -> some View {
         HStack {
-            if value.day != -1 {
-                Text("\(value.day)")
-                    .font(.system(size: 10))
-                    .foregroundColor(.gray)
-                    .padding([.leading, .top], 10)
-                
-                // poop code : ForEach문이 30번 (또는 31번 돌아감)
-                // 🚫 error : 상세 히스토리를 조회하고 back해 나오면 아래코드만 두번 돌아감
-                HStack {
+            VStack {
+                if value.day != -1 {
+                    Text("\(value.day)")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                        .padding([.leading, .top], 10)
+                    
+                    // poop code : ForEach문이 30번 (또는 31번 돌아감)
                     ForEach(viewModel.offsetSleepRecord, id: \.self) {
                         if $0.date == Date2OnlyDate(date: value.date) && compareTimes(isLonger: getTimeDiff(from: $0.bedTime!, to: $0.wakeUpTime!), isShorter: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime)) {
                             Image(systemName: "checkmark.seal")
