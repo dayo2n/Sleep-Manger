@@ -104,7 +104,7 @@ struct CustomDatePicker: View {
                 // 🚫 error : 상세 히스토리를 조회하고 back해 나오면 아래코드만 두번 돌아감
                 HStack {
                     ForEach(viewModel.offsetSleepRecord, id: \.self) {
-                        if $0.date == Date2OnlyDate(date: value.date) && compareTimes(isLonger: getTimeDiff(from: $0.bedTime, to: $0.wakeUpTime), isShorter: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime)) {
+                        if $0.date == Date2OnlyDate(date: value.date) && compareTimes(isLonger: getTimeDiff(from: $0.bedTime!, to: $0.wakeUpTime!), isShorter: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime)) {
                             Image(systemName: "checkmark.seal")
                                 .foregroundColor(.black)
                         }

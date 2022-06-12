@@ -69,6 +69,8 @@ class HistoryViewModel: ObservableObject {
                         self.daySleepRecord = Sleep(wakeUpTime: daySleep.wakeUpTime, bedTime: daySleep.bedTime, date: date)
                         
                     } catch (let error ) {
+                        // 데이터가 없으면 default 00:00임
+                        self.daySleepRecord = Sleep(wakeUpTime: nil, bedTime: nil, date: date)
                         print("🚫 DEBUG on queryDaySleep(): \(record) \(error.localizedDescription)")
                     }
                 case .failure :

@@ -26,8 +26,8 @@ struct TodayView: View {
     func fetchTodayData() {
         viewModel.queryDaySleep(date: Date2OnlyDate(date: Date()))
         if viewModel.daySleepRecord != nil {
-            sleepTime = TimeString2Date(time: viewModel.daySleepRecord!.bedTime)
-            wakeUpTime = TimeString2Date(time: viewModel.daySleepRecord!.wakeUpTime)
+            sleepTime = TimeString2Date(time: viewModel.daySleepRecord!.bedTime!)
+            wakeUpTime = TimeString2Date(time: viewModel.daySleepRecord!.wakeUpTime!)
         }
     }
     
@@ -65,7 +65,7 @@ struct TodayView: View {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime, to:viewModel.daySleepRecord!.wakeUpTime))")
+                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 

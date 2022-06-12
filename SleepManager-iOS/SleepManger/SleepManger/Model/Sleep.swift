@@ -8,8 +8,8 @@
 import Foundation
 
 struct Sleep: Codable, Hashable {
-    var wakeUpTime: String // HH:MM 형식
-    var bedTime: String // HH:MM
+    var wakeUpTime: String? // HH:MM 형식
+    var bedTime: String? // HH:MM
     var date: String
 }
 

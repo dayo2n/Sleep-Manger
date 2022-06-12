@@ -66,7 +66,7 @@ struct HistoryView: View {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime, to:viewModel.daySleepRecord!.wakeUpTime))")
+                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
