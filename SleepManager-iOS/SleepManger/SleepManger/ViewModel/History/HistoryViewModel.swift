@@ -9,7 +9,9 @@ import SwiftUI
 import Alamofire
 
 class HistoryViewModel: ObservableObject {
+    // 오늘 수면기록 정보
     @Published var daySleepRecord : Sleep?
+    // 한달 수면 기록 정보
     @Published var offsetSleepRecord = [Sleep]()
     let defaultTime : String = "00:00"
     

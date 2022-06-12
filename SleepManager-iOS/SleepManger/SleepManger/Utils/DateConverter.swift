@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct DateConverter {
+    let todayDate : String = Date2TimeString(date: Date())
+}
+
 // Date 타입의 값을 "00:00"으로 이루어진 String 타입으로 리턴
 func Date2TimeString(date: Date) -> String {
     
@@ -65,6 +69,7 @@ func getTimeDiff(from: String, to: String) -> String {
     } else {
         retMin = toMin - fromMin
     }
+    
     if retHour < 10 {
         if retMin < 10 {
             return "0\(retHour):0\(retMin)"
@@ -77,4 +82,29 @@ func getTimeDiff(from: String, to: String) -> String {
     }
     
     return "\(retHour):\(retMin)"
+}
+
+// 00:00 형식의 두시간의 대소비교를 부울형으로 리턴
+// isLonger 파라미터가 더 긴 시간이면 true를 반환
+func compareTimes(isLonger: String, isShorter: String) -> Bool {
+    let longer = isLonger.split(separator: ":")
+    let longerHour = Int(longer[0])!
+    let longerMin = Int(longer[1])!
+    
+    let shorter = isShorter.split(separator: ":")
+    let shorterHour = Int(shorter[0])!
+    let shorterMin = Int(shorter[1])!
+    
+    if longerHour > shorterHour {
+        return true
+    } else if longerHour < shorterHour {
+        return false
+    } else { // longerHour == shorterHour
+        if longerMin >= shorterMin {
+            return true
+        } else if longerMin < shorterMin {
+            return false
+        }
+    }
+    return true // default?
 }

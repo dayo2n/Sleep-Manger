@@ -13,14 +13,16 @@ struct HistoryView: View {
     
     var historyDate : DateValue
     @ObservedObject var viewModel : HistoryViewModel
+    @ObservedObject var goalViewModel : ManageViewModel
     @State private var setButton : Bool = false
     @State private var sleepTime: Date = Date()
     @State private var wakeUpTime: Date = Date()
     
     
-    init(historyDate: DateValue, viewModel: HistoryViewModel) {
+    init(historyDate: DateValue, viewModel: HistoryViewModel, goalViewModel: ManageViewModel) {
         self.historyDate = historyDate
         self.viewModel = viewModel
+        self.goalViewModel = goalViewModel
     }
     
     let dateformat: DateFormatter = {
@@ -37,7 +39,7 @@ struct HistoryView: View {
         ScrollView {
             VStack {
                 HStack {
-                    NavigationLink(destination: CalendarView(viewModel: viewModel), label: {
+                    NavigationLink(destination: CalendarView(viewModel: viewModel, goalViewModel: goalViewModel), label: {
                         Text("\(historyDate.date, formatter: self.dateformat)'s Routine")
                             .font(.system(size: 30, weight: .semibold))
                             .foregroundColor(Color("fontColor"))
@@ -68,7 +70,7 @@ struct HistoryView: View {
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
-                                if viewModel.daySleepRecord?.bedTime == "0" {
+                                if viewModel.daySleepRecord?.bedTime == nil {
                                     Image("hand")
                                         .resizable()
                                         .scaledToFit()

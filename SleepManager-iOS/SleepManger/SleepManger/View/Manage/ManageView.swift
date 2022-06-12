@@ -22,7 +22,7 @@ struct ManageView: View {
     @State private var showModalIdx : Int = 0
     @State private var showModal = [false, false, false]
     
-    @ObservedObject var viewModel = ManageViewModel()
+    @ObservedObject var viewModel : ManageViewModel
     
     var body: some View {
         ScrollView {

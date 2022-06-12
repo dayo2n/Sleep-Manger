@@ -11,6 +11,7 @@ struct MainTabView: View {
     
     let user: User
     @ObservedObject var viewModel = HistoryViewModel()
+    @ObservedObject var goalViewModel = ManageViewModel()
     
     var body: some View {
         NavigationView {
@@ -19,11 +20,11 @@ struct MainTabView: View {
                     .tabItem {
                         Image(systemName: "flame")
                     }
-                CalendarView(viewModel: viewModel)
+                CalendarView(viewModel: viewModel, goalViewModel: goalViewModel)
                     .tabItem {
                         Image(systemName: "clock")
                 }
-                ManageView(user: user)
+                ManageView(user: user, viewModel: goalViewModel)
                     .tabItem {
                         Image(systemName: "slider.horizontal.3")
                 }

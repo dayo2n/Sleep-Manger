@@ -11,19 +11,22 @@ struct CustomDatePicker: View {
     
     @Binding var currentDate: Date
     @ObservedObject var viewModel: HistoryViewModel
+    @ObservedObject var goalViewModel : ManageViewModel
     
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
     
+    // Days
+    let days: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    // Months
+    let months: [String : String] = ["January" : "01", "February":"02   ","March":"03","April":"04","May":"05","June":"06","July":"07", "August":"08","September":"09","October":"10","November":"11","December":"12"]
+    
     func fetchMonthData() {
-        viewModel.queryWeekSleep(date: "2022-06-02", offset: 3)
+        viewModel.queryWeekSleep(date: "\(extraDate()[0])-\(String(describing: months[extraDate()[1]]!))-01", offset: 31)
     }
     
     var body: some View {
         VStack() {
-            
-            // Days
-            let days: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
             
             HStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
@@ -72,7 +75,7 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns) {
                 ForEach(extractDate()) { value in
-                    NavigationLink (destination: HistoryView(historyDate: value, viewModel: viewModel), label: {
+                    NavigationLink (destination: HistoryView(historyDate: value, viewModel: viewModel, goalViewModel: goalViewModel), label: {
                         CardView(value: value)
                             .frame(height: 70, alignment: .top)
                     })
@@ -96,6 +99,17 @@ struct CustomDatePicker: View {
                     .font(.system(size: 10))
                     .foregroundColor(.gray)
                     .padding([.leading, .top], 10)
+                
+                // poop code : ForEach문이 30번 (또는 31번 돌아감)
+                // 🚫 error : 상세 히스토리를 조회하고 back해 나오면 아래코드만 두번 돌아감
+                HStack {
+                    ForEach(viewModel.offsetSleepRecord, id: \.self) {
+                        if $0.date == Date2OnlyDate(date: value.date) && compareTimes(isLonger: getTimeDiff(from: $0.bedTime, to: $0.wakeUpTime), isShorter: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime)) {
+                            Image(systemName: "checkmark.seal")
+                                .foregroundColor(.black)
+                        }
+                    }
+                }
             }
             Spacer()
         }
@@ -109,6 +123,8 @@ struct CustomDatePicker: View {
         let date = formatter.string(from: currentDate)
         
         return date.components(separatedBy: " ")
+        // extraDate()[0]이면 "YYYY"년
+        // extraDate()[1]이면 "MMMM"월
     }
     
     func getCurrentMonth() -> Date {
