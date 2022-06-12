@@ -20,7 +20,7 @@ class HistoryViewModel: ObservableObject {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
         let url = "\(Storage().SERVER_URL)/sleeps/day"
         var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         

@@ -75,9 +75,9 @@ class ManageViewModel: ObservableObject {
             .responseString { (response) in
                 switch response.result {
                 case .success :
-                    print("✅ DEBUG on setSleepGoal(): \(response)")
+                    print("✅ DEBUG on setSleepGoal(): \(params)")
                 case .failure :
-                    print("🚫 DEBUG on setSleepGoal(): \(response)")
+                    print("🚫 DEBUG on setSleepGoal(): \(params)")
             }
         }
     }
