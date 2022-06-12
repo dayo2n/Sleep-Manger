@@ -10,6 +10,9 @@ import Alamofire
 
 class HistoryViewModel: ObservableObject {
     // 오늘 수면기록 정보
+    @Published var todaySleepRecord : Sleep?
+    
+    // 하루 수면기록 정보
     @Published var daySleepRecord : Sleep?
     // 한달 수면 기록 정보
     @Published var offsetSleepRecord = [Sleep]()
@@ -47,7 +50,7 @@ class HistoryViewModel: ObservableObject {
     
     // 특정일 수면 시간 조회
     // 해당일자에 기록이 nil인 경우 예외처리 필요 
-    func queryDaySleep(date: String) { // date format: YYYY-MM-dd
+    func queryDaySleep(date: String, isToday: Bool) { // date format: YYYY-MM-dd
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
         
         let url = "\(Storage().SERVER_URL)/sleeps/day?id=\(uid)&date=\(date)"
@@ -66,12 +69,19 @@ class HistoryViewModel: ObservableObject {
                         let daySleep = try JSONDecoder().decode(Sleep.self, from: json)
                         
                         print("✅ DEBUG on queryDaySleep(): \(date)'s sleep \(daySleep.bedTime) | wake-up \(daySleep.wakeUpTime)")
-                        self.daySleepRecord = Sleep(wakeUpTime: daySleep.wakeUpTime, bedTime: daySleep.bedTime, date: date)
-                        
+                        if isToday {
+                            self.todaySleepRecord = Sleep(wakeUpTime: daySleep.wakeUpTime, bedTime: daySleep.bedTime, date: date)
+                        } else { // calendar에서 다른 날짜의 기록을 조회하는 경우
+                            self.daySleepRecord = Sleep(wakeUpTime: daySleep.wakeUpTime, bedTime: daySleep.bedTime, date: date)
+                        }
                     } catch (let error ) {
                         // 데이터가 없으면 default 00:00임
-                        self.daySleepRecord = Sleep(wakeUpTime: nil, bedTime: nil, date: date)
-                        print("⚠️ DEBUG on queryDaySleep(): \(error.localizedDescription)")
+                        if isToday {
+                            self.todaySleepRecord = nil
+                        } else {
+                            self.daySleepRecord = nil
+                        }
+                        print("⚠️ DEBUG on queryDaySleep(): \(date) \(error.localizedDescription)")
                     }
                 case .failure :
                     print("🚫 DEBUG on queryDaySleep(): \(response)")
@@ -95,7 +105,6 @@ class HistoryViewModel: ObservableObject {
                 switch response.result {
                 case .success(let record) :
                     let json = record.data(using: .utf8)!
-                    print(record)
                     do {
                         // 배열로 받은 결과데이터 배열에 추가할 수 있도록
                         let bundleData = try JSONDecoder().decode([Sleep].self, from: json)

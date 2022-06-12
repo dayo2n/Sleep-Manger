@@ -8,7 +8,7 @@
 import Foundation
 
 struct DateConverter {
-    let todayDate : String = Date2TimeString(date: Date())
+    let todayDate : String = Date2OnlyDate(date: Date())
 }
 
 // Date 타입의 값을 "00:00"으로 이루어진 String 타입으로 리턴

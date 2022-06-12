@@ -32,7 +32,7 @@ struct HistoryView: View {
     }()
     
     func fetchHistoryData() {
-        viewModel.queryDaySleep(date: Date2OnlyDate(date: historyDate.date))
+        viewModel.queryDaySleep(date: Date2OnlyDate(date: historyDate.date), isToday: false)
     }
     
     var body: some View {

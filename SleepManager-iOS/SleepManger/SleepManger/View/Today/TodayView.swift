@@ -24,10 +24,10 @@ struct TodayView: View {
     
     // 로그인 후 화면 첫 전환시 query가 되지않고 nil값이 들어옴 (추후 수정)
     func fetchTodayData() {
-        viewModel.queryDaySleep(date: Date2OnlyDate(date: Date()))
-        if viewModel.daySleepRecord != nil {
-            sleepTime = TimeString2Date(time: viewModel.daySleepRecord!.bedTime!)
-            wakeUpTime = TimeString2Date(time: viewModel.daySleepRecord!.wakeUpTime!)
+        viewModel.queryDaySleep(date: DateConverter().todayDate, isToday: true)
+        if viewModel.todaySleepRecord != nil {
+            sleepTime = TimeString2Date(time: viewModel.todaySleepRecord!.bedTime!)
+            wakeUpTime = TimeString2Date(time: viewModel.todaySleepRecord!.wakeUpTime!)
         }
     }
     
@@ -65,11 +65,11 @@ struct TodayView: View {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!))")
+                                Text( (viewModel.todaySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.todaySleepRecord!.bedTime!, to:viewModel.todaySleepRecord!.wakeUpTime!))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
-                                if viewModel.daySleepRecord?.bedTime == nil {
+                                if viewModel.todaySleepRecord?.bedTime == nil {
                                     Image("hand")
                                         .resizable()
                                         .scaledToFit()
@@ -143,8 +143,7 @@ struct TodayView: View {
                         guard let uid = AuthViewModel.shared.userSession?.id else { return }
                         let wakeUp = Date2TimeString(date: wakeUpTime)
                         let sleep = Date2TimeString(date: sleepTime)
-                        let recordDate = Date2OnlyDate(date: Date())
-                        viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: recordDate))
+                        viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate))
                         setButton = false
                     }, label: {
                         Text("Done")
