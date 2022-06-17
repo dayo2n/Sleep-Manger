@@ -19,6 +19,36 @@ class HistoryViewModel: ObservableObject {
     let defaultTime : String = "00:00"
     
     // 특정일 수면 시간 기록
+    func initialRecordDaySleep(daySleep: Sleep) {
+        guard let uid = AuthViewModel.shared.userSession?.id else { return }
+        let url = "\(Storage().SERVER_URL)/sleeps/day"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        
+        let params = ["id" : uid,
+                      "bedTime" : daySleep.bedTime,
+                      "wakeUpTime" : daySleep.wakeUpTime,
+                      "date" : daySleep.date] as Dictionary
+
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
+        
+        AF.request(request).responseString { (response) in
+            switch response.result {
+            case .success:
+                print("✅ DEBUG: success to record day sleep \(params)")
+            case .failure(let error):
+                print("🚫 DEBUG on recordDaySleep(): Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+            }
+        }
+    }
+    
+    // 특정일 수면 시간 기록
     func recordDaySleep(daySleep: Sleep) {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
         let url = "\(Storage().SERVER_URL)/sleeps/day"
@@ -38,6 +68,7 @@ class HistoryViewModel: ObservableObject {
             print("http Body Error")
         }
         
+        print(params)
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:

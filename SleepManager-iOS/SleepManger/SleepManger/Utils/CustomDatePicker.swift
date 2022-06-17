@@ -1,4 +1,4 @@
-//
+
 //  CustomDatePicker.swift
 //  RoutineManger
 //
@@ -59,8 +59,8 @@ struct CustomDatePicker: View {
             }
             .padding(.horizontal)
             .padding(.bottom)
-            // Day View
             
+            // Day View
             HStack() {
                 ForEach(days, id: \.self) {day in
                     Text(day)

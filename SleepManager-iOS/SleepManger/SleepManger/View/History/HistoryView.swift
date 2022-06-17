@@ -66,7 +66,7 @@ struct HistoryView: View {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text( (viewModel.daySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!))")
+                                Text( (viewModel.daySleepRecord == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
@@ -147,7 +147,7 @@ struct HistoryView: View {
                         let wakeUp = Date2TimeString(date: wakeUpTime)
                         let sleep = Date2TimeString(date: sleepTime)
                         let recordDate = Date2OnlyDate(date: historyDate.date)
-                        viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: recordDate))
+                        viewModel.daySleepRecord == nil ? viewModel.initialRecordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate)) : viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate))
                         setButton = false
                     }, label: {
                         Text("Done")

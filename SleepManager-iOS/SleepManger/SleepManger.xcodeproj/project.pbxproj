@@ -14,6 +14,7 @@
 		BF2237A828282A6000BBD8E5 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */; };
 		BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2237A928282CA200BBD8E5 /* DateValue.swift */; };
 		BF2482A7284F751900AA5477 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2482A6284F751900AA5477 /* Storage.swift */; };
+		BF39049A2856615C008C27F7 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3904992856615C008C27F7 /* Water.swift */; };
 		BF46C8B7280A675E00F561A4 /* RoutineMangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */; };
 		BF46C8B9280A675E00F561A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B8280A675E00F561A4 /* ContentView.swift */; };
 		BF46C8BB280A675F00F561A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF46C8BA280A675F00F561A4 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		BF2237A928282CA200BBD8E5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		BF2482A6284F751900AA5477 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BF3904992856615C008C27F7 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
 		BF46C8B3280A675E00F561A4 /* SleepManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineMangerApp.swift; sourceTree = "<group>"; };
 		BF46C8B8280A675E00F561A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				BF62CDE22844F76A00A84123 /* User.swift */,
 				BF62CDF42845C6BC00A84123 /* Sleep.swift */,
 				BFEFF6E6284B3C28008381FC /* History.swift */,
+				BF3904992856615C008C27F7 /* Water.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				BF2237A828282A6000BBD8E5 /* CustomDatePicker.swift in Sources */,
 				BF46C8DE280A7B7B00F561A4 /* RoutineCell.swift in Sources */,
 				BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */,
+				BF39049A2856615C008C27F7 /* Water.swift in Sources */,
 				BF0446D0280DCEFA00D05C9D /* ModalManageCoffeeRoutine.swift in Sources */,
 				BFEFF6E52849F9F9008381FC /* ManageViewModel.swift in Sources */,
 				BFE5A860280C43F400A0022F /* ModalNewDrinkView.swift in Sources */,

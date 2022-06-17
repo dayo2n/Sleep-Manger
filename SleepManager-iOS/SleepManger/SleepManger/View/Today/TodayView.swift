@@ -65,7 +65,7 @@ struct TodayView: View {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text( (viewModel.todaySleepRecord?.bedTime == nil) ? "Records" : "\(getTimeDiff(from:viewModel.todaySleepRecord!.bedTime!, to:viewModel.todaySleepRecord!.wakeUpTime!))")
+                                Text( (viewModel.todaySleepRecord == nil) ? "Records" : "\(getTimeDiff(from:viewModel.todaySleepRecord!.bedTime!, to:viewModel.todaySleepRecord!.wakeUpTime!))")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
@@ -143,7 +143,7 @@ struct TodayView: View {
                         guard let uid = AuthViewModel.shared.userSession?.id else { return }
                         let wakeUp = Date2TimeString(date: wakeUpTime)
                         let sleep = Date2TimeString(date: sleepTime)
-                        viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate))
+                        viewModel.todaySleepRecord == nil ? viewModel.initialRecordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate)) : viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate))
                         setButton = false
                     }, label: {
                         Text("Done")
