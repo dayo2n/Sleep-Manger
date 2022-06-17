@@ -92,7 +92,7 @@ struct ManageView: View {
                 Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
             
                 if routineImage[showModalIdx] == "water" {
-                ModalManageWaterRoutine(isPresented: self.$showModal[showModalIdx], numberOfAlarm: numberOfWaterAlarm)
+                ModalManageWaterRoutine(isPresented: self.$showModal[showModalIdx], numberOfAlarm: numberOfWaterAlarm, viewModel:  viewModel)
                 } else if routineImage[showModalIdx] == "coffee" {
                     ModalManageCoffeeRoutine(isPresented: self.$showModal[showModalIdx])
                 } else if routineImage[showModalIdx] == "sleeping" {

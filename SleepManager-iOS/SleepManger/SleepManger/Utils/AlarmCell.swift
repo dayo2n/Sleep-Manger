@@ -9,12 +9,15 @@ import SwiftUI
 
 struct AlarmCell: View {
     
-    let index: Int
     @State private var date: Date = Date()
+    
+    init(date: Date) {
+        self.date = date
+    }
     
     var body: some View {
         HStack {
-            DatePicker("#\(index)", selection: $date, displayedComponents: .hourAndMinute)
+            DatePicker("# ", selection: $date, displayedComponents: .hourAndMinute)
                 .padding(5)
                 .padding(.leading, 10)
             
@@ -26,11 +29,5 @@ struct AlarmCell: View {
             })
                 .padding(.trailing, 10)
         }
-    }
-}
-
-struct AlarmCell_Previews: PreviewProvider {
-    static var previews: some View {
-        AlarmCell(index: 0)
     }
 }

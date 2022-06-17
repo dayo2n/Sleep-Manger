@@ -13,5 +13,5 @@ struct Water: Codable, Hashable {
 }
 
 struct WaterGoal: Decodable {
-    
+    var drinkGoalTimes : [String]
 }

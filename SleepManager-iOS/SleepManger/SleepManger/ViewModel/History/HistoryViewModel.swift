@@ -11,6 +11,7 @@ import Alamofire
 class HistoryViewModel: ObservableObject {
     // 오늘 수면기록 정보
     @Published var todaySleepRecord : Sleep?
+    @Published var todayWaterRecord : Water?
     
     // 하루 수면기록 정보
     @Published var daySleepRecord : Sleep?
@@ -68,7 +69,6 @@ class HistoryViewModel: ObservableObject {
             print("http Body Error")
         }
         
-        print(params)
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:

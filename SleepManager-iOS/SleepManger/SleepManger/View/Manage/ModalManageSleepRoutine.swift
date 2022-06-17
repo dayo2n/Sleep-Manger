@@ -19,7 +19,6 @@ struct ModalManageSleepRoutine: View {
     func fetchGoals() {
         sleepGoalTime = TimeString2Date(time: viewModel.sleepGoal.goalBedTime)
         wakeUpGoalTime = TimeString2Date(time: viewModel.sleepGoal.goalWakeUpTime)
-        print(sleepGoalTime)
     }
     
     var body: some View {

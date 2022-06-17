@@ -13,6 +13,14 @@ struct ModalManageWaterRoutine: View {
     @Binding var isPresented: Bool
     @State var numberOfAlarm : Int
     
+    @State private var drinkNotificationTimes = [String]()
+    @ObservedObject var viewModel : ManageViewModel
+    
+    func fetchGoals() {
+        drinkNotificationTimes = viewModel.waterGoal.drinkGoalTimes
+        print(drinkNotificationTimes)
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -40,8 +48,8 @@ struct ModalManageWaterRoutine: View {
             
             ScrollView {
                 VStack {
-                    ForEach (0..<numberOfAlarm, id:\.self) { idx in
-                        AlarmCell(index: (idx + 1))
+                    ForEach (drinkNotificationTimes, id:\.self) { time in
+                        AlarmCell(date: TimeString2Date(time: time))
                     }
                 }
             }
@@ -52,6 +60,7 @@ struct ModalManageWaterRoutine: View {
             
             Button(action: {
                 isPresented = false
+//                viewModel.setWaterGoal(newWaterGoal: <#T##WaterGoal#>)
             }, label: {
                 Text("Done")
                     .foregroundColor(Color("fontColor"))
@@ -64,11 +73,5 @@ struct ModalManageWaterRoutine: View {
         .frame(width: 350, height: 500)
         .background(Color("bgColor"))
         .cornerRadius(20)
-    }
-}
-
-struct ModalManageWaterRoutine_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalManageWaterRoutine(isPresented: .constant(true), numberOfAlarm: 3)
     }
 }
