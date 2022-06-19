@@ -72,6 +72,10 @@ struct TodayView: View {
                         Text("Sleep well")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.black)
+                        
+                        Spacer()
+                        
+                        Text("목표 취침시간은 \(getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime))입니다.")
                     }
                     .padding()
                     
@@ -119,19 +123,20 @@ struct TodayView: View {
                                     .background(.white)
                                     .cornerRadius(300)
                             }
-                            .padding()
-                            .padding(.leading, 20)
+                            .padding([.leading, .trailing], 100)
+                            .padding(.bottom)
+//                            .padding(.leading, 20)
                         })
                         
-                        Button(action: {}, label: {
-                            Text("Week's Sleep")
-                                .foregroundColor(.black)
-                                .frame(width: 120, height: 120)
-                                .background(.white)
-                                .cornerRadius(300)
-                                .padding()
-                                .padding(.trailing, 20)
-                        })
+//                        Button(action: {}, label: {
+//                            Text("Week's Sleep")
+//                                .foregroundColor(.black)
+//                                .frame(width: 120, height: 120)
+//                                .background(.white)
+//                                .cornerRadius(300)
+//                                .padding()
+//                                .padding(.trailing, 20)
+//                        })
                     }
                 }
                 .background(Color("cellColor"))
@@ -143,9 +148,8 @@ struct TodayView: View {
         }
         .background(Color("bgColor"))
         .attachPartialSheetToRoot()
-        .popup(isPresented: $setButton,animation: Animation.linear(duration: 0), closeOnTap: false) {
+        .popup(isPresented: $setButton,animation: Animation.linear(duration: 0), closeOnTap: true) {
             ZStack {
-                
                 Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
                 
                 VStack {

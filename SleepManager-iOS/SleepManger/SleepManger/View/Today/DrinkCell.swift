@@ -40,7 +40,7 @@ struct DrinkCell: View {
                 
                 Spacer()
                 
-                Text("You drinked water \(viewModel.todayWaterRecord?.amount ?? 0)ml")
+                Text("\(viewModel.todayWaterRecord?.amount ?? 0)ml 수분 섭취 완료")
             }
             .padding()
             
