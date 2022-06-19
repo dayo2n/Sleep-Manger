@@ -67,6 +67,7 @@ struct ModalManageSleepRoutine: View {
                 let newSleepGoalTime = Date2TimeString(date: sleepGoalTime)
                 let newWakeUpGoalTime = Date2TimeString(date: wakeUpGoalTime)
                 viewModel.setSleepGoal(newSleepGoal: SleepGoal(goalBedTime: newSleepGoalTime, goalWakeUpTime: newWakeUpGoalTime, weekendGoalBedTime: newSleepGoalTime, weekendGoalWakeUpTime: newWakeUpGoalTime))
+                viewModel.getSleepGoal()
             }, label: {
                 Text("Done")
                     .foregroundColor(Color("fontColor"))

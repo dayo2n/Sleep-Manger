@@ -15,6 +15,8 @@
 		BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2237A928282CA200BBD8E5 /* DateValue.swift */; };
 		BF2482A7284F751900AA5477 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2482A6284F751900AA5477 /* Storage.swift */; };
 		BF39049A2856615C008C27F7 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3904992856615C008C27F7 /* Water.swift */; };
+		BF39049C285EFE4E008C27F7 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF39049B285EFE4E008C27F7 /* LocalNotificationManager.swift */; };
+		BF3904A1285F1903008C27F7 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = BF3904A0285F1903008C27F7 /* SwiftPieChart */; };
 		BF46C8B7280A675E00F561A4 /* RoutineMangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */; };
 		BF46C8B9280A675E00F561A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B8280A675E00F561A4 /* ContentView.swift */; };
 		BF46C8BB280A675F00F561A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF46C8BA280A675F00F561A4 /* Assets.xcassets */; };
@@ -60,6 +62,7 @@
 		BF2237A928282CA200BBD8E5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		BF2482A6284F751900AA5477 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BF3904992856615C008C27F7 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		BF39049B285EFE4E008C27F7 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		BF46C8B3280A675E00F561A4 /* SleepManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineMangerApp.swift; sourceTree = "<group>"; };
 		BF46C8B8280A675E00F561A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3904A1285F1903008C27F7 /* SwiftPieChart in Frameworks */,
 				BFE985642847470900AEA19C /* Alamofire in Frameworks */,
 				BFFE6EE9281A8A54001B309C /* SunburstDiagram in Frameworks */,
 				BFE9856A2847638300AEA19C /* SwiftyJSON in Frameworks */,
@@ -158,6 +162,7 @@
 				BFF8F6C62811511200A1A5FC /* AlarmCell.swift */,
 				BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */,
 				BFEFF6E8284B4E5F008381FC /* DateConverter.swift */,
+				BF39049B285EFE4E008C27F7 /* LocalNotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				BFFE6EE8281A8A54001B309C /* SunburstDiagram */,
 				BFE985632847470900AEA19C /* Alamofire */,
 				BFE985692847638300AEA19C /* SwiftyJSON */,
+				BF3904A0285F1903008C27F7 /* SwiftPieChart */,
 			);
 			productName = RoutineManger;
 			productReference = BF46C8B3280A675E00F561A4 /* SleepManger.app */;
@@ -338,6 +344,7 @@
 				BFFE6EE7281A8A54001B309C /* XCRemoteSwiftPackageReference "SwiftSunburstDiagram" */,
 				BFE985622847470900AEA19C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				BFE985682847638300AEA19C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				BF39049F285F1903008C27F7 /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
 			);
 			productRefGroup = BF46C8B4280A675E00F561A4 /* Products */;
 			projectDirPath = "";
@@ -378,6 +385,7 @@
 				BF2237A828282A6000BBD8E5 /* CustomDatePicker.swift in Sources */,
 				BF46C8DE280A7B7B00F561A4 /* RoutineCell.swift in Sources */,
 				BF62CDF02845052700A84123 /* CustomTextField.swift in Sources */,
+				BF39049C285EFE4E008C27F7 /* LocalNotificationManager.swift in Sources */,
 				BF39049A2856615C008C27F7 /* Water.swift in Sources */,
 				BF0446D0280DCEFA00D05C9D /* ModalManageCoffeeRoutine.swift in Sources */,
 				BFEFF6E52849F9F9008381FC /* ManageViewModel.swift in Sources */,
@@ -607,6 +615,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF39049F285F1903008C27F7 /* XCRemoteSwiftPackageReference "SwiftPieChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ilamanov/SwiftPieChart.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		BFE5A861280C4AB800A0022F /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
@@ -642,6 +658,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF3904A0285F1903008C27F7 /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF39049F285F1903008C27F7 /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
+			productName = SwiftPieChart;
+		};
 		BFE5A862280C4AB800A0022F /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFE5A861280C4AB800A0022F /* XCRemoteSwiftPackageReference "PartialSheet" */;

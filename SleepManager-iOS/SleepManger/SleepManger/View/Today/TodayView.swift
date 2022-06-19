@@ -15,11 +15,16 @@ struct TodayView: View {
     @State private var wakeUpTime: Date = Date()
     
     let user: User
+    @State var timeDiff : String = ""
     @ObservedObject var viewModel : HistoryViewModel
+    @ObservedObject var goalViewModel : ManageViewModel
+    
+    @State var pieSliceData = PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 0.0), color: Color("fontColor"))
 
-    init(user: User, viewModel: HistoryViewModel) {
+    init(user: User, viewModel: HistoryViewModel, goalViewModel : ManageViewModel) {
         self.user = user
         self.viewModel = viewModel
+        self.goalViewModel = goalViewModel
     }
     
     // 로그인 후 화면 첫 전환시 query가 되지않고 nil값이 들어옴 (추후 수정)
@@ -28,7 +33,17 @@ struct TodayView: View {
         if viewModel.todaySleepRecord != nil {
             sleepTime = TimeString2Date(time: viewModel.todaySleepRecord!.bedTime!)
             wakeUpTime = TimeString2Date(time: viewModel.todaySleepRecord!.wakeUpTime!)
+            
+            timeDiff = getTimeDiff(from:viewModel.todaySleepRecord!.bedTime!, to:viewModel.todaySleepRecord!.wakeUpTime!)
+
+            pieSliceData.endAngle = Angle(degrees: getRatio(goalSleepTime: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime), realSleepTime: getTimeDiff(from: (viewModel.todaySleepRecord!.bedTime)!, to: (viewModel.todaySleepRecord?.wakeUpTime)!)))
         }
+    }
+    
+    struct PieSliceData {
+        var startAngle: Angle
+        var endAngle: Angle
+        var color: Color
     }
     
     var body: some View {
@@ -44,7 +59,7 @@ struct TodayView: View {
                     
                     Spacer()
                 }
-
+                
                 VStack(alignment: .leading) {
                     HStack {
                         Image("sleeping")
@@ -60,28 +75,51 @@ struct TodayView: View {
                     .padding()
                     
                     HStack {
-                        
                         Button(action: {
                             setButton = true
                         }, label: {
-                            VStack {
-                                Text( (viewModel.todaySleepRecord == nil) ? "Records" : "\(getTimeDiff(from:viewModel.todaySleepRecord!.bedTime!, to:viewModel.todaySleepRecord!.wakeUpTime!))")
-                                    .foregroundColor(.black)
-                                    .padding(.top, 10)
-                                
-                                if viewModel.todaySleepRecord?.bedTime == nil {
-                                    Image("hand")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 30, height: 30)
-                                        .clipped()
+                            ZStack {
+                                // put pie chart
+                                GeometryReader { geometry in
+                                    Path { path in
+                                        let width: CGFloat = min(geometry.size.width, geometry.size.height)
+                                        let height = width
+                                        
+                                        let center = CGPoint(x: width * 0.5, y: height * 0.5)
+                                        
+                                        path.move(to: center)
+                                        
+                                        path.addArc(
+                                            center: center,
+                                            radius: width * 0.5,
+                                            startAngle: Angle(degrees: -90.0) + pieSliceData.startAngle,
+                                            endAngle: Angle(degrees: -90.0) + pieSliceData.endAngle,
+                                            clockwise: false)
+                                        
+                                    }
+                                    .fill(pieSliceData.color)
                                 }
+                                .aspectRatio(1, contentMode: .fit)
+                                
+                                VStack {
+                                    Text( (viewModel.todaySleepRecord == nil) ? "Records" : "\(timeDiff)")
+                                        .foregroundColor(.black)
+                                        .padding(.top, 10)
+                                    
+                                    if viewModel.todaySleepRecord?.bedTime == nil {
+                                        Image("hand")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 30, height: 30)
+                                            .clipped()
+                                    }
+                                }
+                                    .frame(width: 120, height: 120)
+                                    .background(.white)
+                                    .cornerRadius(300)
                             }
-                                .frame(width: 120, height: 120)
-                                .background(.white)
-                                .cornerRadius(300)
-                                .padding()
-                                .padding(.leading, 20)
+                            .padding()
+                            .padding(.leading, 20)
                         })
                         
                         Button(action: {}, label: {
@@ -145,6 +183,7 @@ struct TodayView: View {
                         let sleep = Date2TimeString(date: sleepTime)
                         viewModel.todaySleepRecord == nil ? viewModel.initialRecordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate)) : viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate))
                         setButton = false
+                        fetchTodayData()
                     }, label: {
                         Text("Done")
                             .foregroundColor(Color("fontColor"))

@@ -108,3 +108,14 @@ func compareTimes(isLonger: String, isShorter: String) -> Bool {
     }
     return true // default?
 }
+
+// 목표 수면시간과 실제 수면시간의 비율을 리턴 (파이차트 표현을 위해)
+func getRatio(goalSleepTime: String, realSleepTime: String) -> Double {
+    let goal = goalSleepTime.split(separator: ":")
+    let real = realSleepTime.split(separator: ":")
+    
+    if Int(goal[0])! < Int(real[0])! {
+        return 360.0
+    }
+    return 360.0 * Double(real[0])! / Double(goal[0])!
+}

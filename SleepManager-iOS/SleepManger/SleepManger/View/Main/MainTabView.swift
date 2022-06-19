@@ -16,7 +16,7 @@ struct MainTabView: View {
     var body: some View {
         NavigationView {
             TabView {
-                TodayView(user: user, viewModel: viewModel)
+                TodayView(user: user, viewModel: viewModel, goalViewModel: goalViewModel)
                     .tabItem {
                         Image(systemName: "flame")
                     }
