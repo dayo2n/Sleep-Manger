@@ -28,7 +28,7 @@ struct ManageView: View {
     func setNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                print("set")
+                print("set Permission")
             } else if let error = error {
                 print(error.localizedDescription)
             }
@@ -37,8 +37,8 @@ struct ManageView: View {
     
     func setScheduleNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Feed the cat"
-        content.subtitle = "It looks hungry"
+        content.title = "For your good sleep"
+        content.subtitle = "목표 취침시간이 04:35으로 설정되어 있습니다. 목표 수면시간은 8시간입니다."
         content.sound = UNNotificationSound.default
 
         // show this notification five seconds from now
@@ -95,6 +95,7 @@ struct ManageView: View {
                     // 루틴 추가 버튼
                     Button(action: {
                         self.showAddModal = true
+                        self.setNotificationPermission()
                         self.setScheduleNotification()
                     }, label: {
                         RoutineCell(imageName: "add", routineName: "Add")

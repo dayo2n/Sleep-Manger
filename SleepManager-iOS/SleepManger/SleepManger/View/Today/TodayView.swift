@@ -148,7 +148,7 @@ struct TodayView: View {
         }
         .background(Color("bgColor"))
         .attachPartialSheetToRoot()
-        .popup(isPresented: $setButton,animation: Animation.linear(duration: 0), closeOnTap: true) {
+        .popup(isPresented: $setButton,animation: Animation.linear(duration: 0), closeOnTap: false) {
             ZStack {
                 Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
                 
