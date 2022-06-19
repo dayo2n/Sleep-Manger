@@ -60,7 +60,7 @@ struct ModalManageWaterRoutine: View {
             
             Button(action: {
                 isPresented = false
-//                viewModel.setWaterGoal(newWaterGoal: <#T##WaterGoal#>)
+//                viewModel.setWaterGoal(newWaterGoal: WaterGoal(uid: AuthViewModel.shared.userSession?.id, drinkGoalTimes: <#T##[String]#>))
             }, label: {
                 Text("Done")
                     .foregroundColor(Color("fontColor"))

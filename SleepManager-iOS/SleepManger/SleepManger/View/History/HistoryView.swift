@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PartialSheet
-import SunburstDiagram
 
 struct HistoryView: View {
     
@@ -18,6 +17,14 @@ struct HistoryView: View {
     @State private var sleepTime: Date = Date()
     @State private var wakeUpTime: Date = Date()
     
+    @State var timeDiff : String = ""
+    
+    struct PieSliceData {
+        var startAngle: Angle
+        var endAngle: Angle
+        var color: Color
+    }
+    @State var pieSliceData = PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 0.0), color: Color("fontColor"))
     
     init(historyDate: DateValue, viewModel: HistoryViewModel, goalViewModel: ManageViewModel) {
         self.historyDate = historyDate
@@ -33,6 +40,15 @@ struct HistoryView: View {
     
     func fetchHistoryData() {
         viewModel.queryDaySleep(date: Date2OnlyDate(date: historyDate.date), isToday: false)
+        
+        if viewModel.daySleepRecord != nil {
+            sleepTime = TimeString2Date(time: viewModel.daySleepRecord!.bedTime!)
+            wakeUpTime = TimeString2Date(time: viewModel.daySleepRecord!.wakeUpTime!)
+            
+            timeDiff = getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!)
+
+            pieSliceData.endAngle = Angle(degrees: getRatio(goalSleepTime: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime), realSleepTime: getTimeDiff(from: (viewModel.daySleepRecord!.bedTime)!, to: (viewModel.daySleepRecord?.wakeUpTime)!)))
+        }
     }
     
     var body: some View {
@@ -66,7 +82,7 @@ struct HistoryView: View {
                             setButton = true
                         }, label: {
                             VStack {
-                                Text( (viewModel.daySleepRecord == nil) ? "Records" : "\(getTimeDiff(from:viewModel.daySleepRecord!.bedTime!, to:viewModel.daySleepRecord!.wakeUpTime!))")
+                                Text( (viewModel.daySleepRecord == nil) ? "Records" : "\(timeDiff)")
                                     .foregroundColor(.black)
                                     .padding(.top, 10)
                                 
@@ -101,7 +117,7 @@ struct HistoryView: View {
                 .background(Color("cellColor"))
                 .cornerRadius(20)
                 
-                DrinkCell()
+                DrinkCell(viewModel: self.viewModel, goalViewModel: self.goalViewModel)
                     .cornerRadius(20)
             }
         }
@@ -149,6 +165,7 @@ struct HistoryView: View {
                         let recordDate = Date2OnlyDate(date: historyDate.date)
                         viewModel.daySleepRecord == nil ? viewModel.initialRecordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate)) : viewModel.recordDaySleep(daySleep: Sleep(wakeUpTime: wakeUp, bedTime: sleep, date: DateConverter().todayDate))
                         setButton = false
+                        fetchHistoryData()
                     }, label: {
                         Text("Done")
                             .foregroundColor(Color("fontColor"))

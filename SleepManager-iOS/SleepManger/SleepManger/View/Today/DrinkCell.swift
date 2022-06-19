@@ -11,6 +11,19 @@ import PartialSheet
 struct DrinkCell: View {
     
     @State private var showDrinkModal = false
+    @ObservedObject var viewModel: HistoryViewModel
+    @ObservedObject var goalViewModel : ManageViewModel
+    
+    @State private var drinkedWater : Int = 8
+    
+    init(viewModel: HistoryViewModel, goalViewModel: ManageViewModel) {
+        self.viewModel = viewModel
+        self.goalViewModel = goalViewModel
+    }
+    
+    func fetchData() {
+        drinkedWater = 8 - amountOfAchievedDrinkGoal(totalAmount: viewModel.todayWaterRecord?.amount ?? 0)
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,11 +37,15 @@ struct DrinkCell: View {
                 Text("Drink well")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.black)
+                
+                Spacer()
+                
+                Text("You drinked water \(viewModel.todayWaterRecord?.amount ?? 0)ml")
             }
             .padding()
             
             HStack {
-                ForEach(0 ..< 5) { _ in
+                ForEach(0..<drinkedWater) { _ in
                     Button (action: {}, label: {
                         Image("water")
                             .resizable()
@@ -38,7 +55,7 @@ struct DrinkCell: View {
                     })
                 }
                 
-                ForEach(0 ..< 2) { _ in
+                ForEach(0..<(8-drinkedWater)) { _ in
                     Button (action: {
                         self.showDrinkModal = true
                     }, label: {
@@ -48,7 +65,7 @@ struct DrinkCell: View {
                             .frame(width: 36, height: 36)
                             .clipped()
                             .partialSheet(isPresented: $showDrinkModal) {
-                                ModalNewDrinkView(isPresented: self.$showDrinkModal)
+                                ModalNewDrinkView(isPresented: self.$showDrinkModal, viewModel: viewModel)
                             }
                     })
                 }
@@ -58,11 +75,8 @@ struct DrinkCell: View {
             .padding(.trailing, 30)
         }
         .background(Color("cellColor"))
-    }
-}
-
-struct DrinkCell_Previews: PreviewProvider {
-    static var previews: some View {
-        DrinkCell()
+        .onAppear() {
+            fetchData()
+        }
     }
 }

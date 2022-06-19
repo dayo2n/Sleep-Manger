@@ -13,5 +13,6 @@ struct Water: Codable, Hashable {
 }
 
 struct WaterGoal: Decodable {
+    let uid: Int
     var drinkGoalTimes : [String]
 }

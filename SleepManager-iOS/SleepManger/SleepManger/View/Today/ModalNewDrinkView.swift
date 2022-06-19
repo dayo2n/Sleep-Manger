@@ -10,6 +10,10 @@ import PartialSheet
 
 struct ModalNewDrinkView: View {
     @Binding var isPresented: Bool
+    @ObservedObject var viewModel: HistoryViewModel
+    
+    @State private var water200mlBtnTapped : Bool = true
+    @State private var water500mlBtnTapped : Bool = true
     
     var body: some View {
         VStack {
@@ -29,24 +33,13 @@ struct ModalNewDrinkView: View {
                     .clipped()
                 
                 Button (action: {
-                    print("drink half of a glass")
-                }, label: {
-                    Text("1/2잔 (100ml)")
-                        .foregroundColor(.black)
-                        .padding()
-                        .frame(height: 50)
-                        .background(Color("cellColor"))
-                        .cornerRadius(10)
-                })
-                
-                Button (action: {
-                    print("drink a glass of water")
+                    water200mlBtnTapped.toggle()
                 }, label: {
                     Text("1잔 (200ml)")
                         .foregroundColor(.black)
                         .padding()
                         .frame(height: 50)
-                        .background(Color("cellColor"))
+                        .background(water200mlBtnTapped ? Color("cellColor") : Color("Blue"))
                         .cornerRadius(10)
                 })
             }
@@ -59,24 +52,13 @@ struct ModalNewDrinkView: View {
                     .clipped()
                 
                 Button (action: {
-                    print("drink half of a bottle")
-                }, label: {
-                    Text("1/2병 (250ml)")
-                        .foregroundColor(.black)
-                        .padding()
-                        .frame(height: 50)
-                        .background(Color("cellColor"))
-                        .cornerRadius(10)
-                })
-                
-                Button (action: {
-                    print("drink a bottle of water")
+                    water500mlBtnTapped.toggle()
                 }, label: {
                     Text("1병 (500ml)")
                         .foregroundColor(.black)
                         .padding()
                         .frame(height: 50)
-                        .background(Color("cellColor"))
+                        .background(water500mlBtnTapped ? Color("cellColor") : Color("Blue"))
                         .cornerRadius(10)
                 })
             }
@@ -84,6 +66,12 @@ struct ModalNewDrinkView: View {
             
             Button(action: {
                 self.isPresented = false
+                if !water200mlBtnTapped {
+                    viewModel.recordDayWater(dayWater: Water(amount: 200, date: DateConverter().todayDate))
+                }
+                if !water500mlBtnTapped {
+                    viewModel.recordDayWater(dayWater: Water(amount: 500, date: DateConverter().todayDate))
+                }
             }, label: {
                 Text("Drink")
                     .foregroundColor(.black)
@@ -92,11 +80,5 @@ struct ModalNewDrinkView: View {
                     .cornerRadius(10)
             })
         }
-    }
-}
-
-struct ModalNewDrinkView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalNewDrinkView(isPresented: .constant(true))
     }
 }

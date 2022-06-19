@@ -15,8 +15,10 @@ class ManageViewModel: ObservableObject {
     @Published var sleepGoal : SleepGoal
     
     init() {
-        self.waterGoal = WaterGoal(drinkGoalTimes: [String]())
+//        guard let uid = AuthViewModel.shared.userSession?.id else { return }
+        self.waterGoal = WaterGoal(uid: 1, drinkGoalTimes: [String]())
         self.sleepGoal = SleepGoal(goalBedTime: defaultTime, goalWakeUpTime: defaultTime, weekendGoalBedTime: defaultTime, weekendGoalWakeUpTime: defaultTime)
+        getWaterGoal()
         getSleepGoal()
     }
     
@@ -34,7 +36,6 @@ class ManageViewModel: ObservableObject {
                 .responseString { (response) in
                     switch response.result {
                     case .success(let info) :
-                        print(info)
                         let json = info.data(using: .utf8)!
                         do {
                             let goal = try JSONDecoder().decode(SleepGoal.self, from: json)
@@ -103,7 +104,7 @@ class ManageViewModel: ObservableObject {
                             let goal = try JSONDecoder().decode(WaterGoal.self, from: json)
                             
                             print("✅ DEBUG on getWaterGoal(): \(response.result)")
-                            self.waterGoal = WaterGoal(drinkGoalTimes: goal.drinkGoalTimes)
+                            self.waterGoal = WaterGoal(uid: uid, drinkGoalTimes: goal.drinkGoalTimes)
                         } catch (let error) {
                             print("⚠️ DEBUG on getWaterGoal(): Maybe this user has no data \(error.localizedDescription)")
                         }
@@ -135,10 +136,19 @@ class ManageViewModel: ObservableObject {
             .validate(statusCode: 200..<300)
             .responseString { (response) in
                 switch response.result {
-                case .success :
-                    print("✅ DEBUG on setInitialWaterGoal(): \(params)")
+                case .success(let info) :
+                    let json = info.data(using: .utf8)!
+                    do {
+                        let goal = try JSONDecoder().decode(WaterGoal.self, from: json)
+                        
+                        print("✅ DEBUG on setWaterGoal(): \(response.result)")
+                        self.waterGoal = WaterGoal(uid: uid, drinkGoalTimes: goal.drinkGoalTimes)
+                    } catch (let error) {
+                        print("⚠️ DEBUG on setWaterGoal(): Maybe this user has no data \(error.localizedDescription)")
+                        
+            }
                 case .failure :
-                    print("🚫 DEBUG on setInitialWaterGoal(): \(params)")
+                print("🚫 DEBUG on setInitialWaterGoal(): \(params)")
             }
         }
     }
@@ -165,8 +175,16 @@ class ManageViewModel: ObservableObject {
             .validate(statusCode: 200..<300)
             .responseString { (response) in
                 switch response.result {
-                case .success :
-                    print("✅ DEBUG on setWaterGoal(): \(params)")
+                case .success(let info) :
+                    let json = info.data(using: .utf8)!
+                    do {
+                        let goal = try JSONDecoder().decode(WaterGoal.self, from: json)
+                        
+                        print("✅ DEBUG on setWaterGoal(): \(response.result)")
+                        self.waterGoal = WaterGoal(uid: uid, drinkGoalTimes: goal.drinkGoalTimes)
+                    } catch (let error) {
+                        print("⚠️ DEBUG on setWaterGoal(): Maybe this user has no data \(error.localizedDescription)")
+                    }
                 case .failure :
                     print("🚫 DEBUG on setWaterGoal(): \(params)")
             }

@@ -19,6 +19,11 @@ struct TodayView: View {
     @ObservedObject var viewModel : HistoryViewModel
     @ObservedObject var goalViewModel : ManageViewModel
     
+    struct PieSliceData {
+        var startAngle: Angle
+        var endAngle: Angle
+        var color: Color
+    }
     @State var pieSliceData = PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 0.0), color: Color("fontColor"))
 
     init(user: User, viewModel: HistoryViewModel, goalViewModel : ManageViewModel) {
@@ -38,12 +43,8 @@ struct TodayView: View {
 
             pieSliceData.endAngle = Angle(degrees: getRatio(goalSleepTime: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime), realSleepTime: getTimeDiff(from: (viewModel.todaySleepRecord!.bedTime)!, to: (viewModel.todaySleepRecord?.wakeUpTime)!)))
         }
-    }
-    
-    struct PieSliceData {
-        var startAngle: Angle
-        var endAngle: Angle
-        var color: Color
+        
+        viewModel.queryDayWater(date: DateConverter().todayDate, isToday: true)
     }
     
     var body: some View {
@@ -136,7 +137,7 @@ struct TodayView: View {
                 .background(Color("cellColor"))
                 .cornerRadius(20)
                 
-                DrinkCell()
+                DrinkCell(viewModel: self.viewModel, goalViewModel: self.goalViewModel)
                     .cornerRadius(20)
             }
         }

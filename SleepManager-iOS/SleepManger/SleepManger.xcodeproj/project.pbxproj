@@ -17,6 +17,7 @@
 		BF39049A2856615C008C27F7 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3904992856615C008C27F7 /* Water.swift */; };
 		BF39049C285EFE4E008C27F7 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF39049B285EFE4E008C27F7 /* LocalNotificationManager.swift */; };
 		BF3904A1285F1903008C27F7 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = BF3904A0285F1903008C27F7 /* SwiftPieChart */; };
+		BF3904A5285F6DD9008C27F7 /* DrinkConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3904A4285F6DD9008C27F7 /* DrinkConverter.swift */; };
 		BF46C8B7280A675E00F561A4 /* RoutineMangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */; };
 		BF46C8B9280A675E00F561A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8B8280A675E00F561A4 /* ContentView.swift */; };
 		BF46C8BB280A675F00F561A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF46C8BA280A675F00F561A4 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		BF2482A6284F751900AA5477 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BF3904992856615C008C27F7 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
 		BF39049B285EFE4E008C27F7 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		BF3904A4285F6DD9008C27F7 /* DrinkConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkConverter.swift; sourceTree = "<group>"; };
 		BF46C8B3280A675E00F561A4 /* SleepManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF46C8B6280A675E00F561A4 /* RoutineMangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineMangerApp.swift; sourceTree = "<group>"; };
 		BF46C8B8280A675E00F561A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				BF2237A728282A6000BBD8E5 /* CustomDatePicker.swift */,
 				BFEFF6E8284B4E5F008381FC /* DateConverter.swift */,
 				BF39049B285EFE4E008C27F7 /* LocalNotificationManager.swift */,
+				BF3904A4285F6DD9008C27F7 /* DrinkConverter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				BF62CDF52845C6BC00A84123 /* Sleep.swift in Sources */,
 				BF62CDEC2845006600A84123 /* LoginView.swift in Sources */,
 				BF2237AA28282CA200BBD8E5 /* DateValue.swift in Sources */,
+				BF3904A5285F6DD9008C27F7 /* DrinkConverter.swift in Sources */,
 				BFEFF6E02848AB40008381FC /* HistoryViewModel.swift in Sources */,
 				BFF8F6C72811511200A1A5FC /* AlarmCell.swift in Sources */,
 				BFE9856728474A3C00AEA19C /* AuthViewModel.swift in Sources */,
