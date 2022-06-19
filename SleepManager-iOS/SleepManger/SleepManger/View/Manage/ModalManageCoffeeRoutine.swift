@@ -10,8 +10,14 @@ import SwiftUI
 struct ModalManageCoffeeRoutine: View {
     
     @Binding var isPresented: Bool
-    
+    @ObservedObject var viewModel: ManageViewModel
     @State private var date: Date = Date()
+    
+    func fetchData() {
+        if viewModel.sleepGoal != nil {
+            date = TimeString2Date(time: viewModel.sleepGoal.goalBedTime)
+        }
+    }
     
     var body: some View {
         VStack {
@@ -50,11 +56,8 @@ struct ModalManageCoffeeRoutine: View {
         .frame(width: 350)
         .background(Color("bgColor"))
         .cornerRadius(20)
-    }
-}
-
-struct ModalManageCoffeeRoutine_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalManageCoffeeRoutine(isPresented: .constant(true))
+        .onAppear() {
+            fetchData()
+        }
     }
 }

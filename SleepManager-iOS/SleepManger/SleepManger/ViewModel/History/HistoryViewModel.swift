@@ -18,8 +18,11 @@ class HistoryViewModel: ObservableObject {
     @Published var daySleepRecord : Sleep?
     // 하루 수분 섭취 기록 정보
     @Published var dayWaterRecord : Water?
+    
     // 한달 수면 기록 정보
     @Published var offsetSleepRecord = [Sleep]()
+    // 한달 수면 기록 정보
+    @Published var offsetWaterRecord = [Water]()
     let defaultTime : String = "00:00"
     
     // 특정일 수면 시간 기록 (초기)
@@ -193,6 +196,40 @@ class HistoryViewModel: ObservableObject {
                     }
                 case .failure :
                     print("🚫 DEBUG on queryDaySleep(): \(response)")
+            }
+        }
+    }
+    
+    // 특정 기간 수분 섭취 기록 조회
+    func queryWeekWater(date: String, offset: Int) {
+        guard let uid = AuthViewModel.shared.userSession?.id else { return }
+        
+        var queryResult = Sleep(wakeUpTime: defaultTime, bedTime: defaultTime, date: date)
+        let url = "\(Storage().SERVER_URL)/dirnks/period?id=\(uid)&date=\(date)&offset=\(offset)"
+        AF.request(url,
+                   method: .get,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
+            .validate(statusCode: 200..<300)
+            .responseString { (response) in
+                switch response.result {
+                case .success(let record) :
+                    let json = record.data(using: .utf8)!
+                    do {
+                        // 배열로 받은 결과데이터 배열에 추가할 수 있도록
+                        let bundleData = try JSONDecoder().decode([Water].self, from: json)
+                        for singleData in bundleData {
+                            self.offsetWaterRecord.append(Water(amount: singleData.amount, date: singleData.date))
+                        }
+                        print("✅ DEBUG on queryWeekWater(): \(bundleData)")
+                        
+                    } catch (let error ) {
+                        print("🚫 DEBUG on queryWeekWater(): \(error.localizedDescription)")
+                    }
+                    
+                case .failure :
+                    print("🚫 DEBUG on queryWeekWaterp(): \(response)")
             }
         }
     }

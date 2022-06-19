@@ -23,6 +23,7 @@ struct CustomDatePicker: View {
     
     func fetchMonthData() {
         viewModel.queryWeekSleep(date: "\(extraDate()[0])-\(String(describing: months[extraDate()[1]]!))-01", offset: 31)
+        viewModel.queryWeekWater(date: "\(extraDate()[0])-\(String(describing: months[extraDate()[1]]!))-01", offset: 31)
     }
     
     var body: some View {
@@ -69,7 +70,7 @@ struct CustomDatePicker: View {
                         .frame(maxWidth: .infinity) // 자동 간격 최대
                 }
             }
-            //Dates
+            // Dates
             // Lazy Grid
             let columns = Array(repeating: GridItem() , count: 7)
             
@@ -101,10 +102,16 @@ struct CustomDatePicker: View {
                         .foregroundColor(.gray)
                         .padding([.leading, .top], 10)
                     
-                    // poop code : ForEach문이 30번 (또는 31번 돌아감)
+                    // 💩 poop code : ForEach문이 30번 (또는 31번 돌아감)
                     ForEach(viewModel.offsetSleepRecord, id: \.self) {
                         if $0.date == Date2OnlyDate(date: value.date) && compareTimes(isLonger: getTimeDiff(from: $0.bedTime!, to: $0.wakeUpTime!), isShorter: getTimeDiff(from: goalViewModel.sleepGoal.goalBedTime, to: goalViewModel.sleepGoal.goalWakeUpTime)) {
                             Image(systemName: "checkmark.seal")
+                                .foregroundColor(.black)
+                        }
+                    }
+                    ForEach(viewModel.offsetWaterRecord, id: \.self) {
+                        if $0.date == Date2OnlyDate(date: value.date) && $0.amount > 2000 {
+                            Image(systemName: "checkmark.seal.fill")
                                 .foregroundColor(.black)
                         }
                     }
