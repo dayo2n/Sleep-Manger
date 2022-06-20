@@ -38,7 +38,7 @@ struct ManageView: View {
     func setScheduleNotification() {
         let content = UNMutableNotificationContent()
         content.title = "For your good sleep"
-        content.subtitle = "목표 취침시간이 04:35으로 설정되어 있습니다. 목표 수면시간은 8시간입니다."
+        content.subtitle = "목표 취침시간이 16:30으로 설정되어 있습니다."
         content.sound = UNNotificationSound.default
 
         // show this notification five seconds from now

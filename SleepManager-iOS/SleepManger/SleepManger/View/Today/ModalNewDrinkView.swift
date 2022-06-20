@@ -62,6 +62,25 @@ struct ModalNewDrinkView: View {
                         .cornerRadius(10)
                 })
             }
+            .padding()
+            
+            HStack {
+                Text("직접입력")
+                    .font(.system(size: 14, weight: .semibold))
+                
+                Button (action: {
+                }, label: {
+                    Text("            |")
+                        .foregroundColor(.black)
+                        .padding()
+                        .frame(height: 50)
+                        .background(Color("cellColor"))
+                        .cornerRadius(10)
+                })
+                
+                Text("ml")
+                    .font(.system(size: 14, weight: .semibold))
+            }
             .padding([.leading, .trailing, .bottom])
             
             Button(action: {
