@@ -55,12 +55,10 @@ struct HistoryView: View {
         ScrollView {
             VStack {
                 HStack {
-                    NavigationLink(destination: CalendarView(viewModel: viewModel, goalViewModel: goalViewModel), label: {
-                        Text("\(historyDate.date, formatter: self.dateformat)'s Routine")
-                            .font(.system(size: 30, weight: .semibold))
-                            .foregroundColor(Color("fontColor"))
-                            .padding([.leading, .bottom])
-                    })
+                    Text("\(historyDate.date, formatter: self.dateformat)'s Routine")
+                        .font(.system(size: 30, weight: .semibold))
+//                        .foregroundColor(Color("fontColor"))
+                        .padding([.leading, .bottom])
                 }
                 
                 VStack(alignment: .leading) {
@@ -101,17 +99,17 @@ struct HistoryView: View {
                                 .padding(.leading, 20)
                         })
                         
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Week's Sleep")
-                                .foregroundColor(.black)
-                                .frame(width: 120, height: 120)
-                                .background(.white)
-                                .cornerRadius(300)
-                                .padding()
-                                .padding(.trailing, 20)
-                        })
+//                        Button(action: {
+//
+//                        }, label: {
+//                            Text("Week's Sleep")
+//                                .foregroundColor(.black)
+//                                .frame(width: 120, height: 120)
+//                                .background(.white)
+//                                .cornerRadius(300)
+//                                .padding()
+//                                .padding(.trailing, 20)
+//                        })
                     }
                 }
                 .background(Color("cellColor"))

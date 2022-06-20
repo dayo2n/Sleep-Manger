@@ -14,7 +14,7 @@ struct DrinkCell: View {
     @ObservedObject var viewModel: HistoryViewModel
     @ObservedObject var goalViewModel : ManageViewModel
     
-    @State private var drinkedWater : Int = 8
+    @State var drinkedWater : Int = 0
     
     init(viewModel: HistoryViewModel, goalViewModel: ManageViewModel) {
         self.viewModel = viewModel
@@ -22,7 +22,7 @@ struct DrinkCell: View {
     }
     
     func fetchData() {
-        drinkedWater = 8 - amountOfAchievedDrinkGoal(totalAmount: viewModel.todayWaterRecord?.amount ?? 0)
+        self.drinkedWater = amountOfAchievedDrinkGoal(totalAmount: viewModel.todayWaterRecord?.amount ?? 0)
     }
     
     var body: some View {
@@ -45,7 +45,7 @@ struct DrinkCell: View {
             .padding()
             
             HStack {
-                ForEach(0..<drinkedWater) { _ in
+                ForEach(0..<(drinkedWater), id: \.self) { _ in
                     Button (action: {}, label: {
                         Image("water")
                             .resizable()
@@ -55,7 +55,7 @@ struct DrinkCell: View {
                     })
                 }
                 
-                ForEach(0..<(8-drinkedWater)) { _ in
+                ForEach(0..<(8-drinkedWater), id: \.self) { _ in
                     Button (action: {
                         self.showDrinkModal = true
                     }, label: {

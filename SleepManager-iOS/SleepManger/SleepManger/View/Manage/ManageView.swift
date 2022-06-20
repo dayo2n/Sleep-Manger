@@ -51,6 +51,11 @@ struct ManageView: View {
         UNUserNotificationCenter.current().add(request)
     }
     
+    func fetchData() {
+        viewModel.getWaterGoal()
+        viewModel.getSleepGoal()
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -128,6 +133,9 @@ struct ManageView: View {
                     ModalManageSleepRoutine(isPresented: self.$showModal[showModalIdx], viewModel: viewModel)
                 }
             }
+        }
+        .onAppear() {
+            fetchData()
         }
     }
 }

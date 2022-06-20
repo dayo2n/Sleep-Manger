@@ -27,8 +27,7 @@ struct CustomDatePicker: View {
     }
     
     var body: some View {
-        VStack() {
-            
+        VStack {
             HStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(extraDate()[0])
@@ -109,6 +108,8 @@ struct CustomDatePicker: View {
                                 .foregroundColor(.black)
                         }
                     }
+//                    let element = Sleep(wakeUpTime: <#T##String?#>, bedTime: <#T##String?#>, date: Date2OnlyDate(date: value.date))
+                    
                     ForEach(viewModel.offsetWaterRecord, id: \.self) {
                         if $0.date == Date2OnlyDate(date: value.date) && $0.amount > 2000 {
                             Image(systemName: "checkmark.seal.fill")

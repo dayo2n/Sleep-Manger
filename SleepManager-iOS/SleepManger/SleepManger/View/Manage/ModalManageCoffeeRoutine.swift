@@ -15,7 +15,7 @@ struct ModalManageCoffeeRoutine: View {
     
     func fetchData() {
         if viewModel.sleepGoal != nil {
-            date = TimeString2Date(time: viewModel.sleepGoal.goalBedTime)
+            date = TimeString2Date(time: "22:45")
         }
     }
     
