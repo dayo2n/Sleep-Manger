@@ -18,6 +18,7 @@ struct HistoryView: View {
     @State private var wakeUpTime: Date = Date()
     
     @State var timeDiff : String = ""
+//    @Environment(\.presentationMode) var presentationMode
     
     struct PieSliceData {
         var startAngle: Angle
@@ -54,6 +55,9 @@ struct HistoryView: View {
     var body: some View {
         ScrollView {
             VStack {
+//                Button(action: {presentationMode.wrappedValue.dismiss()}, label: {
+//                    Text("dismiss")
+//                })
                 HStack {
                     Text("\(historyDate.date, formatter: self.dateformat)'s Routine")
                         .font(.system(size: 30, weight: .semibold))
