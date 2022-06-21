@@ -26,7 +26,6 @@
 		BF46C8D1280A68D300F561A4 /* ManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8D0280A68D300F561A4 /* ManageView.swift */; };
 		BF46C8D3280A68F000F561A4 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8D2280A68F000F561A4 /* HistoryView.swift */; };
 		BF46C8D6280A692900F561A4 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8D5280A692900F561A4 /* TodayView.swift */; };
-		BF46C8D8280A6B6300F561A4 /* SleepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8D7280A6B6300F561A4 /* SleepCell.swift */; };
 		BF46C8DA280A6B6E00F561A4 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8D9280A6B6E00F561A4 /* DrinkCell.swift */; };
 		BF46C8DC280A756500F561A4 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8DB280A756500F561A4 /* HeaderView.swift */; };
 		BF46C8DE280A7B7B00F561A4 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46C8DD280A7B7B00F561A4 /* RoutineCell.swift */; };
@@ -74,7 +73,6 @@
 		BF46C8D0280A68D300F561A4 /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
 		BF46C8D2280A68F000F561A4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		BF46C8D5280A692900F561A4 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
-		BF46C8D7280A6B6300F561A4 /* SleepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCell.swift; sourceTree = "<group>"; };
 		BF46C8D9280A6B6E00F561A4 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
 		BF46C8DB280A756500F561A4 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BF46C8DD280A7B7B00F561A4 /* RoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				BF46C8D5280A692900F561A4 /* TodayView.swift */,
-				BF46C8D7280A6B6300F561A4 /* SleepCell.swift */,
 				BFE5A85F280C43F400A0022F /* ModalNewDrinkView.swift */,
 				BFF8F6CA2811B97B00A1A5FC /* SetSleepButton.swift */,
 				BF46C8D9280A6B6E00F561A4 /* DrinkCell.swift */,
@@ -410,7 +407,6 @@
 				BF2482A7284F751900AA5477 /* Storage.swift in Sources */,
 				BF46C8D1280A68D300F561A4 /* ManageView.swift in Sources */,
 				BF0446D2280DCF0900D05C9D /* ModalManageSleepRoutine.swift in Sources */,
-				BF46C8D8280A6B6300F561A4 /* SleepCell.swift in Sources */,
 				BF46C8E4280B332400F561A4 /* ModalAddRoutineView.swift in Sources */,
 				BF62CDE32844F76A00A84123 /* User.swift in Sources */,
 			);

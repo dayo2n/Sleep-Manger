@@ -153,7 +153,6 @@ class HistoryViewModel: ObservableObject {
                     } catch (let error ) {
                         print("🚫 DEBUG on queryWeekSleep(): \(error.localizedDescription)")
                     }
-                    
                 case .failure :
                     print("🚫 DEBUG on queryWeekSleep(): \(response)")
             }
@@ -163,7 +162,6 @@ class HistoryViewModel: ObservableObject {
     // 특정일 수분 섭취 기록 조회
     func queryDayWater(date: String, isToday: Bool) { // date format: YYYY-MM-dd
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
-        
         let url = "\(Storage().SERVER_URL)/drinks/day?id=\(uid)&date=\(date)"
         AF.request(url,
                    method: .get,
@@ -203,7 +201,6 @@ class HistoryViewModel: ObservableObject {
     // 특정 기간 수분 섭취 기록 조회
     func queryWeekWater(date: String, offset: Int) {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
-        
         var queryResult = Sleep(wakeUpTime: defaultTime, bedTime: defaultTime, date: date)
         let url = "\(Storage().SERVER_URL)/dirnks/period?id=\(uid)&date=\(date)&offset=\(offset)"
         AF.request(url,
@@ -223,11 +220,9 @@ class HistoryViewModel: ObservableObject {
                             self.offsetWaterRecord.append(Water(amount: singleData.amount, date: singleData.date))
                         }
                         print("✅ DEBUG on queryWeekWater(): \(bundleData)")
-                        
                     } catch (let error ) {
                         print("🚫 DEBUG on queryWeekWater(): \(error.localizedDescription)")
                     }
-                    
                 case .failure :
                     print("🚫 DEBUG on queryWeekWaterp(): \(response)")
             }

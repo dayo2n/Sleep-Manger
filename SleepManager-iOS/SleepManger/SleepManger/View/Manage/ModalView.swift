@@ -17,7 +17,7 @@ struct ModalView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
             Text("Dismiss")
-          }
+            }
         }
     }
 }

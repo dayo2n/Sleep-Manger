@@ -102,6 +102,5 @@ class AuthViewModel: ObservableObject {
     func fetchUser() {
         guard let uid = userSession?.id else { return }
         print("DEBUG: uid \(uid)")
-//        self.currentUser를 fetch해주는 코드 필요
     }
 }

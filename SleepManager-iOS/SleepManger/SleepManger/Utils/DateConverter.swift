@@ -13,7 +13,6 @@ struct DateConverter {
 
 // Date 타입의 값을 "00:00"으로 이루어진 String 타입으로 리턴
 func Date2TimeString(date: Date) -> String {
-    
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     dateFormatter.timeZone = TimeZone(identifier: "KST")

@@ -95,7 +95,7 @@ struct ManageView: View {
                                 }
                             )
                         }
-                }
+                    }
                     
                     // 루틴 추가 버튼
                     Button(action: {

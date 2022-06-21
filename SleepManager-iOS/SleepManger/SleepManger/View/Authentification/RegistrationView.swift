@@ -51,7 +51,6 @@ struct RegistrationView: View {
                             .padding()
                     })
                     
-                    
                     Spacer()
                     
                     Button(action: {mode.wrappedValue.dismiss()}, label: {

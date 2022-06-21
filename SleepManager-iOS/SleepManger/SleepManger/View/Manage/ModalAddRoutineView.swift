@@ -17,7 +17,6 @@ struct ModalAddRoutineView: View {
     let categories : [String] = ["meal", "stretch", "massage",
                                  "meditation", "exercise", "brush teeth"]
     
-
     var body: some View {
         VStack {
             HStack {

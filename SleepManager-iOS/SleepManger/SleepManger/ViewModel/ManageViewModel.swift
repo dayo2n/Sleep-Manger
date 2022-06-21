@@ -15,7 +15,6 @@ class ManageViewModel: ObservableObject {
     @Published var sleepGoal : SleepGoal
     
     init() {
-//        guard let uid = AuthViewModel.shared.userSession?.id else { return }
         self.waterGoal = WaterGoal(uid: 1, drinkGoalTimes: [String]())
         self.sleepGoal = SleepGoal(goalBedTime: defaultTime, goalWakeUpTime: defaultTime, weekendGoalBedTime: defaultTime, weekendGoalWakeUpTime: defaultTime)
         getWaterGoal()
@@ -25,7 +24,6 @@ class ManageViewModel: ObservableObject {
     // 목표 취침, 기상 시간 조회
     func getSleepGoal() {
         guard let uid = AuthViewModel.shared.userSession?.id else { return }
-        
         let url = "\(Storage().SERVER_URL)/sleeps/goals?id=\(uid)"
             AF.request(url,
                        method: .get,
@@ -121,7 +119,6 @@ class ManageViewModel: ObservableObject {
         let url = "\(Storage().SERVER_URL)/drinks/times"
         let params: Parameters = ["id": uid,
                                   "drinkNotificationTimes" : newWaterGoal.drinkGoalTimes] as Dictionary
-        
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -160,7 +157,6 @@ class ManageViewModel: ObservableObject {
         let url = "\(Storage().SERVER_URL)/drinks/times"
         let params: Parameters = ["id": uid,
                                   "drinkNotificationTimes" : newWaterGoal.drinkGoalTimes] as Dictionary
-        
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
