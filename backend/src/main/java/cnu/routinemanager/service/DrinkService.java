@@ -29,6 +29,7 @@ public class DrinkService {
         this.drinkRepository = drinkRepository;
     }
 
+    // 사용자가 수분 섭취를 기록하면, 수분 섭취 기록을 생성 및 업데이트
     @Transactional
     public boolean createOrUpdateDrinkRecord(DrinkRecordRequest drinkRecordRequest) {
         Member member = memberService.findById((drinkRecordRequest.getId()));
@@ -48,12 +49,14 @@ public class DrinkService {
         }
     }
 
+    // 수분 섭취 기록을 수정
     @Transactional
     public void modifyDrinkRecord(DrinkRecordRequest drinkRecordRequest) {
         Member member = memberService.findById(drinkRecordRequest.getId());
         member.modifyDrinkAmount(drinkRecordRequest.getDate(), drinkRecordRequest.getAmount());
     }
 
+    // 수분 섭취 기록을 데이터베이스에서 찾아오기 (1일)
     public DrinkRecordResponse findDrinkRecord(Long memberId, LocalDate date) {
         Drink drinkRecord = drinkRepository.findByMemberIdAndDate(memberId, date)
                                            .orElseThrow(() -> new DrinkException("해당 날짜의 수분 섭취 기록이 존재하지 않습니다.", HttpStatus.NOT_FOUND));
@@ -61,6 +64,7 @@ public class DrinkService {
         return new DrinkRecordResponse(date, drinkRecord.getAmount());
     }
 
+    // 수분 섭취 기록을 데이터베이스에서 찾아오기 (특정 기간)
     public List<DrinkRecordResponse> findDrinkRecord(Long memberId, LocalDate startDate, int offset) {
         LocalDate endDate = startDate.plusDays(offset);
         List<Drink> drinkRecords = drinkRepository.findByMemberIdAndDateBetweenOrderByDate(memberId, startDate, endDate);
