@@ -25,6 +25,7 @@ public class DrinkNotificationTimeService {
         this.drinkNotificationTimeRepository = drinkNotificationTimeRepository;
     }
 
+    // 사용자의 수분 섭취 알림 시간을 찾고, Front 로 보냄
     public DrinkNotificationTimeResponse findDrinkNotificationTime(Long memberId) {
         if (!memberService.existsById(memberId)) {
             throw new EntityNotFoundException("존재하지 않는 멤버입니다.");
@@ -33,6 +34,7 @@ public class DrinkNotificationTimeService {
         return DrinkNotificationTimeResponse.from(drinkNotificationTimes);
     }
 
+    // 사용자가 처음 수분 섭취 알림 시간 설정하면 데이터베이스에 저장
     @Transactional
     public void createDrinkNotificationTimes(DrinkNotificationTimeRequest drinkNotificationTimeRequest) {
         Long memberId = drinkNotificationTimeRequest.getId();
@@ -49,6 +51,7 @@ public class DrinkNotificationTimeService {
         drinkNotificationTimeRepository.saveAll(drinkNotificationTimes);
     }
 
+    // 사용자가 수분 섭취 알림 시간을 변경하면 알림 시간을 변경해줌
     @Transactional
     public void setDrinkNotificationTime(DrinkNotificationTimeRequest drinkNotificationTimeRequest) {
         Member member = memberService.findById(drinkNotificationTimeRequest.getId());
