@@ -10,6 +10,7 @@ import cnu.routinemanager.domain.DrinkNotificationTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+// Front 로 보낼때 데이터 format
 @Getter
 @NoArgsConstructor
 public class DrinkNotificationTimeResponse {
