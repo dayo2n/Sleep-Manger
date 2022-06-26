@@ -21,11 +21,13 @@ public class DrinkNotificationTime {
     @Column
     private LocalTime drinkTime;
 
+    // 알림 시간 설정
     public DrinkNotificationTime(LocalTime drinkTime) {
         this.drinkTime = drinkTime;
     }
 
-    public DrinkNotificationTime(Member member, LocalTime drinkTime) {
+    // 알림 시간 설정정
+   public DrinkNotificationTime(Member member, LocalTime drinkTime) {
         this.member = member;
         this.drinkTime = drinkTime;
     }
