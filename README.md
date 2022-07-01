@@ -39,3 +39,9 @@ iOS 애플리케이션 '루틴 매니저'는 건강관리 중 충분하고 적�
 # 🧩 Prototype
 
 [Figma](https://www.figma.com/file/8ymuv2riApFPANZvQDZoac/HCI-Prototype?node-id=102%3A1093)
+
+# 🎥 Demo
+
+|로그인|수면 관련|수분 관련|히스토리|
+|:------:|:-------:|:---:|:---:|
+|![로그인](https://user-images.githubusercontent.com/57654681/176894893-10cf1fd6-fd61-411d-bd05-44cbb47336d6.gif)|![수면](https://user-images.githubusercontent.com/57654681/176894933-3e4d2a0a-9fcf-4679-a03f-e778be13abe0.gif)|![수분](https://user-images.githubusercontent.com/57654681/176894916-264b77bc-908c-4053-a106-51c9afced997.gif)|![히스토리](https://user-images.githubusercontent.com/57654681/176894946-7bc01057-85b2-4ebe-9aea-dc2d1eec4ea5.gif)|
